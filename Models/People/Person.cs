@@ -1,4 +1,4 @@
-﻿namespace KitchenStockManager.people
+﻿namespace KitchenStockManager.Models.People
 {
     class Person
     {
@@ -17,22 +17,22 @@
 
         public string getFirstName()
         {
-            return this.firstName;
+            return firstName;
         }
 
         public string getLastName()
         {
-            return this.lastName;
+            return lastName;
         }
 
         public string getRole()
         {
-            return this.role;
+            return role;
         }
 
         public string getContactNumber()
         {
-            return this.contactNumber;
+            return contactNumber;
         }
 
         public void setFirstName(string firstName)

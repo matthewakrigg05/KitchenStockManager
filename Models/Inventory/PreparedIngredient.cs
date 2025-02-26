@@ -1,4 +1,4 @@
-﻿namespace KitchenStockManager.Entities
+﻿namespace KitchenStockManager.Models.Inventory
 {
     class PreparedIngredient : Item
     {

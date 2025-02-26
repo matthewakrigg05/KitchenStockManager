@@ -1,4 +1,6 @@
-﻿namespace KitchenStockManager.Entities
+﻿using KitchenStockManager.Models.People;
+
+namespace KitchenStockManager.Models.Inventory
 {
     internal class Item
     {
