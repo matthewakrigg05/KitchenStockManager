@@ -10,14 +10,7 @@ namespace KitchenStockManager.Models.Inventory
         private float cost { get; set; }
         private Supplier supplier { get; set; }
     
-        public Item()
-        {
-            name = null;
-            quantity = 0;
-            unit = null;
-            cost = 0;
-            supplier = null;
-        }
+        public Item() { }
 
         public Item(string itemName, int itemQuantity, string unitType, float itemCost)
         {

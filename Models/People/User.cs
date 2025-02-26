@@ -8,13 +8,15 @@
         private string lastName { get; set; }
         private string role { get; set; }
 
+        public User() { }
+
         public User(string email, string pass)
         {
             emailAddress = email;
             password = pass;
         }
 
-        public User(string pass, string fname, string lname, string emailAdd, string userRole)
+        public User(string emailAdd, string pass, string fname, string lname, string userRole)
         { 
             password = pass;
             firstName = fname;

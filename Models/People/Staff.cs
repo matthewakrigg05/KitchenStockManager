@@ -5,11 +5,7 @@
         private string staffRole { get; set; }
         private string contactNumber { get; set; }
 
-        public Staff() 
-            : base("N/A", "N/A", "N/A")
-        {
-            staffRole = "N/A";
-        }
+        public Staff() { }
 
         public Staff(string firstName, string lastName, string role, string contactNumber) 
             : base(firstName, lastName, contactNumber)

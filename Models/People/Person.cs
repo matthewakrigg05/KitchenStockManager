@@ -7,13 +7,8 @@
         protected string contactNumber { get; set; }
         protected string emailAddress { get; set; }
 
-        protected Person()
-        {
-            firstName = "N/A";
-            lastName = "N/A";
-            contactNumber = "N/A";
-            emailAddress = "N/A";
-        }
+        protected Person() { }
+
         protected Person(string fname, string lname, string contactNum, string emailAdd)
         {
             firstName = fname;

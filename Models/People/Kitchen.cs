@@ -5,11 +5,7 @@
         private List<Staff> staffList { get; set; }
         private string kitchenName { get; set; }
 
-        public Kitchen()
-        {
-            kitchenName = "N/A";
-            staffList = new List<Staff>();
-        }
+        public Kitchen() { }
 
         public Kitchen(List<Staff> staff, string name)
         {
