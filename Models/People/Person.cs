@@ -2,57 +2,24 @@
 {
     class Person
     {
-        private string firstName;
-        private string lastName;
-        private string role;
-        private string contactNumber;
+        protected string firstName { get; set; }
+        protected string lastName { get; set; }
+        protected string contactNumber { get; set; }
+        protected string emailAddress { get; set; }
 
-        public Person(string firstName, string lastName, string role, string contactNumber)
+        protected Person()
         {
-            setFirstName(firstName);
-            setLastName(lastName);
-            setRole(role);
-            setRole(contactNumber);
+            firstName = "N/A";
+            lastName = "N/A";
+            contactNumber = "N/A";
+            emailAddress = "N/A";
         }
-
-        public string getFirstName()
+        protected Person(string fname, string lname, string contactNum, string emailAdd)
         {
-            return firstName;
-        }
-
-        public string getLastName()
-        {
-            return lastName;
-        }
-
-        public string getRole()
-        {
-            return role;
-        }
-
-        public string getContactNumber()
-        {
-            return contactNumber;
-        }
-
-        public void setFirstName(string firstName)
-        {
-            this.firstName = firstName;
-        }
-
-        public void setLastName(string lastName)
-        {
-            this.lastName = lastName;
-        }
-
-        public void setRole(string role)
-        {
-            this.role = role;
-        }
-
-        public void setContactNumber(string contactNumber)
-        {
-            this.contactNumber = contactNumber;
+            firstName = fname;
+            lastName = lname;
+            contactNumber = contactNum;
+            emailAddress = emailAdd;
         }
     }
 }
