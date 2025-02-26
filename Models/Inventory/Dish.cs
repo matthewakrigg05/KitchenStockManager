@@ -6,6 +6,7 @@
         private List<RawIngredient> rawIngredients {  get; set; }
         private List<PreparedIngredient> preparedIngredients { get; set; }
         private string description {  get; set; }
+        private string type { get; set; }
 
         public Dish() { }
 
@@ -28,5 +29,13 @@
             preparedIngredients = preparedIngreds;
         }
 
+        public Dish(string dishName, string dishDesc, List<RawIngredient> rawIngreds, List<PreparedIngredient> preparedIngreds, string dishType)
+        {
+            name = dishName;
+            description = dishDesc;
+            rawIngredients = rawIngreds;
+            preparedIngredients = preparedIngreds;
+            type = dishType;
+        }
     }
 }
