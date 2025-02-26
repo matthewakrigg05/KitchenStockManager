@@ -2,7 +2,15 @@
 {
     class PreparedIngredient : Item
     {
-        private RawIngredient[] rawIngredients;
-        private string preparationInstructions;
+        private string preparationInstructions { get; set; }
+        private List<RawIngredient> ingredients {  get; set; }
+
+        public PreparedIngredient() { }
+
+        public PreparedIngredient(string preparationInstructs, List<RawIngredient> ingreds)
+        {
+            preparationInstructions = preparationInstructs;
+            ingredients = ingreds;
+        }
     }
 }
