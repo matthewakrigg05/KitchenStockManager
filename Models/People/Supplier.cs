@@ -4,7 +4,7 @@
     {
         public Supplier() { }
 
-        public Supplier(string firstName, string lastName, string contactNumber) 
-            : base(firstName, lastName, contactNumber) { }
+        public Supplier(string firstName, string lastName, string contactNumber, string email) 
+            : base(firstName, lastName, contactNumber, email) { }
     }
 }
