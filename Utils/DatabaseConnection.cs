@@ -21,9 +21,9 @@ namespace Utils
             return _instance;
         }
 
-        public bool IsConnect()
+        public bool Connect()
         {
-            if (Connection == null)
+            if (Connection == null || Connection.State == System.Data.ConnectionState.Closed)
             {
                 if (String.IsNullOrEmpty(DatabaseName))
                     return false;
@@ -33,10 +33,16 @@ namespace Utils
                 Connection.Open();
             }
 
-            return true;
+            return Connection.State == System.Data.ConnectionState.Open;
         }
 
-        public void Close() { Connection.Close(); }
+        public void Close()
+        {
+            if (Connection != null && Connection.State == System.Data.ConnectionState.Open)
+            {
+                Connection.Close();
+            }
+        }
 
     }
 }

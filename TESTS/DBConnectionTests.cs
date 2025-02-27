@@ -27,7 +27,7 @@ namespace TESTS
             dbConnection.DatabaseName = null;
 
             // Act
-            var result = dbConnection.IsConnect();
+            var result = dbConnection.Connect();
 
             // Assert
             Assert.False(result);
@@ -38,18 +38,13 @@ namespace TESTS
         {
             // Arrange
             var dbConnection = DBConnection.Instance();
-            dbConnection.Server = "127.0.0.1";
-            dbConnection.DatabaseName = "TempKSMdb";
+            dbConnection.Server = "localhost";
+            dbConnection.DatabaseName = "ksm";
             dbConnection.UserName = "root";
             dbConnection.Password = "NnVaZnNvAz29!";
 
-            var mockConnection = new Mock<MySqlConnection>();
-            mockConnection.Setup(c => c.Open());
-
-            dbConnection.Connection = mockConnection.Object;
-
             // Act
-            var result = dbConnection.IsConnect();
+            var result = dbConnection.Connect();
 
             // Assert
             Assert.True(result);
@@ -60,16 +55,17 @@ namespace TESTS
         {
             // Arrange
             var dbConnection = DBConnection.Instance();
-            var mockConnection = new Mock<MySqlConnection>();
-            mockConnection.Setup(c => c.Close());
-
-            dbConnection.Connection = mockConnection.Object;
+            dbConnection.Server = "localhost";
+            dbConnection.DatabaseName = "ksm";
+            dbConnection.UserName = "root";
+            dbConnection.Password = "NnVaZnNvAz29!";
+            dbConnection.Connect();
 
             // Act
             dbConnection.Close();
 
             // Assert
-            mockConnection.Verify(c => c.Close(), Times.Once);
+            Assert.True(dbConnection.Connection.State == System.Data.ConnectionState.Closed);
         }
     }
 }
