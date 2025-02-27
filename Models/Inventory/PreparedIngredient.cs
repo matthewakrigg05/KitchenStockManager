@@ -26,7 +26,7 @@
         {
             preparationInstructions = preparationInstructs;
             ingredients = ingreds;
-            preparedIngredients = preparedIngredients;
+            preparedIngredients = preparedIngreds;
         }
     }
 }

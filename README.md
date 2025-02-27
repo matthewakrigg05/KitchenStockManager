@@ -6,7 +6,7 @@ In it you should be able to do the following:
 	- [ ] Create menus, with names and descriptions so they can be passed to menu design staff
 	- [ ] Manage inventory in a controlled fashion
 	- [ ] Create lists for orders to be placed/that have been placed
-	- [ ] Create prep lists and have them assigned to staff
+	- [ ] Create prep lists and have them assigned to staff (specifically kitchen staff)
 	- [ ] Store supplier information so they are easy to contact regarding orders
 	
 Then, in the future, I intend to make it possible to use analytical tools that enable the user to view trends
