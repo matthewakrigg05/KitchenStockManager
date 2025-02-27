@@ -41,7 +41,7 @@ namespace TESTS
             dbConnection.Server = "localhost";
             dbConnection.DatabaseName = "ksm";
             dbConnection.UserName = "root";
-            dbConnection.Password = "NnVaZnNvAz29!";
+            dbConnection.Password = "";
 
             // Act
             var result = dbConnection.Connect();
@@ -58,7 +58,7 @@ namespace TESTS
             dbConnection.Server = "localhost";
             dbConnection.DatabaseName = "ksm";
             dbConnection.UserName = "root";
-            dbConnection.Password = "NnVaZnNvAz29!";
+            dbConnection.Password = "";
             dbConnection.Connect();
 
             // Act
