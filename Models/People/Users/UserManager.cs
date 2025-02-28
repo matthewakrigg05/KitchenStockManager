@@ -1,24 +1,10 @@
-﻿using Microsoft.Data.SqlClient;
-using MySql.Data.MySqlClient;
-using System.Data;
+﻿using MySql.Data.MySqlClient;
+using System.Net.Mail;
 
-namespace KitchenStockManager.Models.People
+namespace KitchenStockManager.Models.People.Users
 {
-    internal class User
+    class UserManager
     {
-        private string emailAddress { get; set; }
-        private string password { get; set; }
-        private string firstName { get; set; }
-        private string lastName { get; set; }
-        private string role { get; set; }
-
-        public User() { }
-
-        public User(string email, string pass)
-        {
-            emailAddress = email;
-            password = pass;
-        }
 
         public void LogIn(string email, string pass, MySqlConnection connection)
         {
@@ -42,15 +28,14 @@ namespace KitchenStockManager.Models.People
                     }
                     else
                     {
-                        emailAddress = email;
-                        password = pass;
+                        User user = new User(email, pass);
                     }
 
                 }
             }
         }
 
-        public void RegisterUser(string email, string pass, string fname, string lname, MySqlConnection connection)
+        public User RegisterUser(string email, string pass, string fname, string lname, MySqlConnection connection)
         {
             using (connection)
             {
@@ -70,14 +55,7 @@ namespace KitchenStockManager.Models.People
                     {
                         Console.WriteLine("Registration has failed - email already taken!");
                         result.Close();
-                        return;
-                    }
-                    else
-                    {
-                        emailAddress = email;
-                        password = pass;
-                        firstName = fname;
-                        lastName = lname;
+                        return null;
                     }
                 }
 
@@ -94,12 +72,12 @@ namespace KitchenStockManager.Models.People
                     if (rows == 1)
                     {
                         Console.WriteLine("Successfully registered a new user!");
-                        return;
+                        return new User(email, pass, fname, lname); ;
                     }
                     else
                     {
                         Console.WriteLine("Unsuccessful registration.");
-                        return;
+                        return null;
                     }
                 }
 
