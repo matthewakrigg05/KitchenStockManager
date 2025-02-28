@@ -15,4 +15,6 @@ implement an AI solution that can learn these trends and ensure that kitchens do
 depending on the days of the week or the season.
 
 As mentioned, this is being developed in C# and uses the MVVM framework, as I intend for this application to be deployable 
-to Mac and Windows, with the option in the future to expand the project to iOS and android!
+to Mac and Windows, with the option in the future to expand the project to iOS and android! I am also making a conscious
+effort to implement appropriate unit testing, ideally, writing my unit tests before I write the methods that I am 
+testing.
