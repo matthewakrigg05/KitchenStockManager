@@ -19,7 +19,7 @@ namespace KitchenStockManager.WinUI
             this.InitializeComponent();
         }
 
-        protected override MauiApp CreateMauiApp() => Main.CreateMauiApp();
+        protected override Microsoft.Maui.Hosting.MauiApp CreateMauiApp() => AppBuild.CreateMauiApp();
     }
 
 }

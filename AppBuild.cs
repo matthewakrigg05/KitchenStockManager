@@ -2,7 +2,7 @@
 
 namespace KitchenStockManager
 {
-    public static class Main
+    public static class AppBuild
     {
         public static MauiApp CreateMauiApp()
         {

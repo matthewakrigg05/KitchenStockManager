@@ -1,4 +1,4 @@
-﻿namespace KitchenStockManager.Models.People
+﻿namespace KitchenStockManager.Models.People.Users
 {
     internal class User
     {
@@ -16,13 +16,12 @@
             password = pass;
         }
 
-        public User(string emailAdd, string pass, string fname, string lname, string userRole)
-        { 
+        public User(string email, string pass, string fname, string lname)
+        {
+            emailAddress = email;
             password = pass;
             firstName = fname;
             lastName = lname;
-            emailAddress = emailAdd;
-            role = userRole;
         }
     }
 }

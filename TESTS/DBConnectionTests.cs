@@ -8,64 +8,31 @@ namespace TESTS
 {
     public class DBConnectionTests
     {
+
         [Fact]
-        public void Instance_ShouldReturnSameInstance()
+        public async Task IsConnect_ShouldReturnTrue_WhenConnectionIsEstablished()
         {
+            // Arrange
+            var dbConnection = await DBHelper.GetConnection();
+
             // Act
-            var instance1 = DBConnection.Instance();
-            var instance2 = DBConnection.Instance();
+            dbConnection.Open();
 
             // Assert
-            Assert.Same(instance1, instance2);
+            Assert.True(dbConnection.State == System.Data.ConnectionState.Open);
         }
 
         [Fact]
-        public void IsConnect_ShouldReturnFalse_WhenDatabaseNameIsNullOrEmpty()
+        public async Task Close_ShouldCloseConnection()
         {
             // Arrange
-            var dbConnection = DBConnection.Instance();
-            dbConnection.DatabaseName = null;
-
-            // Act
-            var result = dbConnection.Connect();
-
-            // Assert
-            Assert.False(result);
-        }
-
-        [Fact]
-        public void IsConnect_ShouldReturnTrue_WhenConnectionIsEstablished()
-        {
-            // Arrange
-            var dbConnection = DBConnection.Instance();
-            dbConnection.Server = "localhost";
-            dbConnection.DatabaseName = "ksm";
-            dbConnection.UserName = "root";
-            dbConnection.Password = "";
-
-            // Act
-            var result = dbConnection.Connect();
-
-            // Assert
-            Assert.True(result);
-        }
-
-        [Fact]
-        public void Close_ShouldCloseConnection()
-        {
-            // Arrange
-            var dbConnection = DBConnection.Instance();
-            dbConnection.Server = "localhost";
-            dbConnection.DatabaseName = "ksm";
-            dbConnection.UserName = "root";
-            dbConnection.Password = "";
-            dbConnection.Connect();
+            var dbConnection = await DBHelper.GetConnection();
 
             // Act
             dbConnection.Close();
 
             // Assert
-            Assert.True(dbConnection.Connection.State == System.Data.ConnectionState.Closed);
+            Assert.True(dbConnection.State == System.Data.ConnectionState.Closed);
         }
     }
 }

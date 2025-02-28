@@ -5,6 +5,6 @@ namespace KitchenStockManager
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate
     {
-        protected override MauiApp CreateMauiApp() => Main.CreateMauiApp();
+        protected override Microsoft.Maui.Hosting.MauiApp CreateMauiApp() => AppBuild.CreateMauiApp();
     }
 }
