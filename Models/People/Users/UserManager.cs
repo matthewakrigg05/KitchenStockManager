@@ -1,14 +1,18 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Net.Mail;
+using Utils;
 
 namespace KitchenStockManager.Models.People.Users
 {
     class UserManager
     {
 
-        public void LogIn(string email, string pass, MySqlConnection connection)
+        public UserManager() { }
+
+        // connect to db separately, rather than passing it down
+        public async Task<User> LogIn(string email, string pass)
         {
-            using (connection)
+            using (var connection = await DBHelper.GetConnection())
             {
                 string logInQuery = "SELECT * FROM Users (email, password) WHERE email = @email AND password = @password;";
 
@@ -24,13 +28,12 @@ namespace KitchenStockManager.Models.People.Users
                     {
                         Console.WriteLine("Log In has failed");
                         result.Close();
-                        return;
+                        return null;
                     }
                     else
                     {
-                        User user = new User(email, pass);
+                        return new User(email, pass);
                     }
-
                 }
             }
         }
@@ -48,15 +51,14 @@ namespace KitchenStockManager.Models.People.Users
                     emailCmd.Parameters.AddWithValue("@email", email);
                     emailCmd.Prepare();
 
-                    MySqlDataReader result = emailCmd.ExecuteReader();
-
-
-                    if (result.HasRows)
+                    using (MySqlDataReader result = emailCmd.ExecuteReader())
                     {
-                        Console.WriteLine("Registration has failed - email already taken!");
-                        result.Close();
-                        return null;
-                    }
+                        if (result.HasRows)
+                        {
+                            Console.WriteLine("Registration has failed - email already taken!");
+                            return null;
+                        }
+                    }   
                 }
 
                 using (MySqlCommand insertCmd = new MySqlCommand(insertionStatement, connection))
