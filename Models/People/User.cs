@@ -37,7 +37,7 @@ namespace KitchenStockManager.Models.People
                     if (!result.HasRows)
                     {
                         Console.WriteLine("Log In has failed");
-                        result.Close(); 
+                        result.Close();
                         return;
                     }
                     else
@@ -47,6 +47,62 @@ namespace KitchenStockManager.Models.People
                     }
 
                 }
+            }
+        }
+
+        public void RegisterUser(string email, string pass, string fname, string lname, MySqlConnection connection)
+        {
+            using (connection)
+            {
+                string emailQuery = "SELECT * FROM Users (email) WHERE email = @email;";
+                string insertionStatement = "INSERT INTO Users (email, password, firstName, lastName) " +
+                    "VALUES (@email, @password, @firstName, @lastName)";
+
+                using (MySqlCommand emailCmd = new MySqlCommand(emailQuery, connection))
+                {
+                    emailCmd.Parameters.AddWithValue("@email", email);
+                    emailCmd.Prepare();
+
+                    MySqlDataReader result = emailCmd.ExecuteReader();
+
+
+                    if (result.HasRows)
+                    {
+                        Console.WriteLine("Registration has failed - email already taken!");
+                        result.Close();
+                        return;
+                    }
+                    else
+                    {
+                        emailAddress = email;
+                        password = pass;
+                        firstName = fname;
+                        lastName = lname;
+                    }
+                }
+
+                using (MySqlCommand insertCmd = new MySqlCommand(insertionStatement, connection))
+                {
+                    insertCmd.Parameters.AddWithValue("@email", email);
+                    insertCmd.Parameters.AddWithValue("@password", pass);
+                    insertCmd.Parameters.AddWithValue("@firstName", fname);
+                    insertCmd.Parameters.AddWithValue("@lastName", lname);
+                    insertCmd.Prepare();
+
+                    int rows = insertCmd.ExecuteNonQuery();
+
+                    if (rows == 1)
+                    {
+                        Console.WriteLine("Successfully registered a new user!");
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unsuccessful registration.");
+                        return;
+                    }
+                }
+
             }
         }
     }
