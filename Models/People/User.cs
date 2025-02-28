@@ -1,4 +1,8 @@
-﻿namespace KitchenStockManager.Models.People
+﻿using Microsoft.Data.SqlClient;
+using MySql.Data.MySqlClient;
+using System.Data;
+
+namespace KitchenStockManager.Models.People
 {
     internal class User
     {
@@ -16,13 +20,18 @@
             password = pass;
         }
 
-        public User(string emailAdd, string pass, string fname, string lname, string userRole)
-        { 
-            password = pass;
-            firstName = fname;
-            lastName = lname;
-            emailAddress = emailAdd;
-            role = userRole;
+        public void LogIn(string email, string password, MySqlConnection connection)
+        {
+            using (connection)
+            {
+                string logInQuery = "SELECT * FROM Users (email, password) WHERE email = @email AND password = @password;";
+
+                using (MySqlCommand cmd = new MySqlCommand(logInQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", password);
+                }
+            }
         }
     }
 }
