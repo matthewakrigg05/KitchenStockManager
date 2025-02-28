@@ -20,7 +20,7 @@ namespace KitchenStockManager.Models.People
             password = pass;
         }
 
-        public void LogIn(string email, string password, MySqlConnection connection)
+        public void LogIn(string email, string pass, MySqlConnection connection)
         {
             using (connection)
             {
@@ -29,7 +29,23 @@ namespace KitchenStockManager.Models.People
                 using (MySqlCommand cmd = new MySqlCommand(logInQuery, connection))
                 {
                     cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@password", pass);
+                    cmd.Prepare();
+
+                    MySqlDataReader result = cmd.ExecuteReader();
+
+                    if (!result.HasRows)
+                    {
+                        Console.WriteLine("Log In has failed");
+                        result.Close(); 
+                        return;
+                    }
+                    else
+                    {
+                        emailAddress = email;
+                        password = pass;
+                    }
+
                 }
             }
         }
