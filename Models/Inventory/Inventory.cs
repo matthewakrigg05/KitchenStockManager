@@ -13,7 +13,7 @@
             items = inventoryItems;
         }
 
-        public Item GetItem(string itemName)
+        public Item? GetItem(string itemName)
         {
             foreach (Item item in items)
             {
@@ -30,8 +30,14 @@
             items.Add(item);
         }
 
-        public void RemoveItem(string itemName) { items.Remove(GetItem(itemName)); }
-        public void RemoveItem(Item item) { items.Remove(item); }
+        public void RemoveItem(string itemName)
+        {
+            Item? item = GetItem(itemName);
+            if (item != null)
+            {
+                items.Remove(item);
+            }
+        }
 
         public void AddPreparedIngredient(PreparedIngredient preparedIngredient)
         {
