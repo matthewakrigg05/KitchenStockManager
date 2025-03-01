@@ -1,11 +1,11 @@
 ﻿namespace KitchenStockManager.Models.People
 {
-    class Person
+    public abstract class Person
     {
-        protected string firstName { get; set; }
-        protected string lastName { get; set; }
-        protected string contactNumber { get; set; }
-        protected string emailAddress { get; set; }
+        protected string firstName;
+        protected string lastName;
+        protected string contactNumber;
+        protected string emailAddress;
 
         protected Person() { }
 

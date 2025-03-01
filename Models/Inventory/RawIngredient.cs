@@ -2,7 +2,7 @@
 
 namespace KitchenStockManager.Models.Inventory
 {
-    class RawIngredient : Item
+    public class RawIngredient : Item
     {
         public RawIngredient() { }
 

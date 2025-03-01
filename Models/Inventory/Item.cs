@@ -2,7 +2,7 @@
 
 namespace KitchenStockManager.Models.Inventory
 {
-    internal class Item
+    public class Item
     {
         private string name;
         private int quantity;
@@ -11,6 +11,13 @@ namespace KitchenStockManager.Models.Inventory
         private Supplier supplier;
 
         public Item() { }
+
+        public Item(string itemName, int itemQuantity, string unitType)
+        {
+            name = itemName;
+            quantity = itemQuantity;
+            unit = unitType;
+        }
 
         public Item(string itemName, int itemQuantity, string unitType, float itemCost)
         {

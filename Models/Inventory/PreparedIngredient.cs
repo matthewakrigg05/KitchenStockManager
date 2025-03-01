@@ -1,16 +1,17 @@
 ﻿namespace KitchenStockManager.Models.Inventory
 {
-    class PreparedIngredient : Item
+    public class PreparedIngredient : Item
     {
         private string preparationInstructions { get; set; }
-        private List<RawIngredient> ingredients {  get; set; }
+        private List<RawIngredient> ingredients { get; set; }
         private List<PreparedIngredient> preparedIngredients { get; set; }
 
         // need constructors that refer to the item class
 
         public PreparedIngredient() { }
 
-        public PreparedIngredient(string preparationInstructs, List<RawIngredient> ingreds)
+        public PreparedIngredient(string itemName, int itemQuantity, string unitType, string preparationInstructs, List<RawIngredient> ingreds)
+            : base(itemName, itemQuantity, unitType)
         {
             preparationInstructions = preparationInstructs;
             ingredients = ingreds;
