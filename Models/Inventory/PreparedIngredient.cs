@@ -3,8 +3,8 @@
     public class PreparedIngredient : Item
     {
         private string preparationInstructions;
-        private List<RawIngredient> ingredients;
-        private List<PreparedIngredient> preparedIngredients;
+        private List<RawIngredient> ingredients = new List<RawIngredient>();
+        private List<PreparedIngredient> preparedIngredients = new List<PreparedIngredient>();
 
         public PreparedIngredient() { }
 

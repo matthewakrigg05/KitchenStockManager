@@ -9,8 +9,8 @@ namespace KitchenStockManager.TESTS.InventoryTests
         public void AddItem_ShouldAddItemToInventory()
         {
             // Arrange
-            var inventory = new Inventory();
-            var item = new Item("Apple", 10, "kg");
+            Inventory inventory = new Inventory();
+            Item item = new Item("Apple", 10, "kg");
 
             // Act
             inventory.AddItem(item);
