@@ -2,13 +2,14 @@
 {
     public class PreparedIngredient : Item
     {
-        private string preparationInstructions { get; set; }
-        private List<RawIngredient> ingredients { get; set; }
-        private List<PreparedIngredient> preparedIngredients { get; set; }
-
-        // need constructors that refer to the item class
+        private string preparationInstructions;
+        private List<RawIngredient> ingredients;
+        private List<PreparedIngredient> preparedIngredients;
 
         public PreparedIngredient() { }
+
+        public PreparedIngredient(string itemName, int itemQuantity, string unitType)
+            : base(itemName, itemQuantity, unitType) { }
 
         public PreparedIngredient(string itemName, int itemQuantity, string unitType, string preparationInstructs, List<RawIngredient> ingreds)
             : base(itemName, itemQuantity, unitType)
