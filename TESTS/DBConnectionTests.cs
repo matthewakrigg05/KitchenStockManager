@@ -9,7 +9,6 @@ namespace TESTS
         [Fact]
         public async Task IsConnect_ShouldReturnTrue_WhenConnectionIsEstablished()
         {
-
             // Act
             var dbConnection = await DBHelper.GetConnection();
 
