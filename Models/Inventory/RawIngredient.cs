@@ -2,8 +2,10 @@
 
 namespace KitchenStockManager.Models.Inventory
 {
-    class RawIngredient : Item
+    public class RawIngredient : Item
     {
+        private string foodGroup;
+
         public RawIngredient() { }
 
         public RawIngredient(string itemName, int itemQuantity, string unitType, float itemCost)
@@ -11,6 +13,18 @@ namespace KitchenStockManager.Models.Inventory
 
         public RawIngredient(string itemName, int itemQuantity, string unitType, float itemCost, Supplier itemSupplier)
             : base(itemName, itemQuantity, unitType, itemCost, itemSupplier) { }
+
+        // Getters and setters - no other methods beyond this point
+
+        public void SetFoodGroup(string group)
+        {
+            foodGroup = group;
+        }
+
+        public string GetFoodGroup()
+        {
+            return foodGroup;
+        }
 
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace KitchenStockManager.Models.People
 {
-    class Supplier : Person
+    public class Supplier : Person
     {
         public Supplier() { }
 

@@ -2,15 +2,22 @@
 
 namespace KitchenStockManager.Models.Inventory
 {
-    internal class Item
+    public class Item
     {
-        private string name { get; set; }
-        private int quantity { get; set; }
-        private string unit { get; set; }
-        private float cost { get; set; }
-        private Supplier supplier { get; set; }
-    
+        private string name;
+        private int quantity;
+        private string unit;
+        private float cost;
+        private Supplier supplier;
+
         public Item() { }
+
+        public Item(string itemName, int itemQuantity, string unitType)
+        {
+            name = itemName;
+            quantity = itemQuantity;
+            unit = unitType;
+        }
 
         public Item(string itemName, int itemQuantity, string unitType, float itemCost)
         {
@@ -28,5 +35,59 @@ namespace KitchenStockManager.Models.Inventory
             cost = itemCost;
             supplier = itemSupplier;
         }
+
+        // Getters and setters - no other methods beyond this point
+
+        public void SetName(string itemName)
+        {
+            name = itemName;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public void SetQuantity(int itemQuantity)
+        {
+            quantity = itemQuantity;
+        }
+
+        public int GetQuantity() 
+        { 
+            return quantity; 
+        }
+
+        public void SetUnit(string unitType)
+        {
+            unit = unitType;
+        }
+
+        public string GetUnit() 
+        { 
+            return unit; 
+        }
+
+        public void SetCost(float itemCost)
+        {
+            cost = itemCost;
+        }
+
+        public float GetCost() 
+        {
+            return cost; 
+        }
+
+        public void SetSupplier(Supplier itemSupplier)
+        {
+            supplier = itemSupplier;
+        }
+
+        public Supplier GetSupplier() 
+        { 
+            return supplier;
+        }
+
+
     }
 }
