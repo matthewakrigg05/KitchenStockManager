@@ -1,6 +1,4 @@
-﻿using KitchenStockManager.Models.Other;
-
-namespace KitchenStockManager.Models.Inventory
+﻿namespace KitchenStockManager.Models.Inventory
 {
     class Menu
     {
@@ -12,6 +10,50 @@ namespace KitchenStockManager.Models.Inventory
         public Menu(string name, List<Dish> dish)
         {
             menuName = name;
+            dishes = dish;
+        }
+
+        public Dish GetDish(string dishName)
+        {
+            foreach (Dish dish in dishes)
+            {
+                if (dish.GetName() == dishName)
+                {
+                    return dish;
+                }
+            }
+            return null;
+        }
+
+        public void AddDish(Dish dish)
+        {
+            dishes.Add(dish);
+        }
+
+        public void RemoveDish(Dish dish)
+        {
+            dishes.Remove(dish);
+        }
+
+        // Getters and setters
+
+        public void SetMenuName(string name)
+        {
+            menuName = name;
+        }
+
+        public string GetMenuName()
+        {
+            return menuName;
+        }
+
+        public List<Dish> GetDishes()
+        {
+            return dishes;
+        }
+
+        public void SetDishes(List<Dish> dish)
+        {
             dishes = dish;
         }
     }

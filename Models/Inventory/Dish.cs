@@ -2,11 +2,11 @@
 {
     class Dish
     {
-        private string name {  get; set; }
-        private List<RawIngredient> rawIngredients {  get; set; }
-        private List<PreparedIngredient> preparedIngredients { get; set; }
-        private string description {  get; set; }
-        private string type { get; set; }
+        private string name;
+        private List<RawIngredient> rawIngredients;
+        private List<PreparedIngredient> preparedIngredients;
+        private string description;
+        private string type;
 
         public Dish() { }
 
@@ -36,6 +36,16 @@
             rawIngredients = rawIngreds;
             preparedIngredients = preparedIngreds;
             type = dishType;
+        }
+
+        public void SetName(string dishName)
+        {
+            name = dishName;
+        }
+
+        public string GetName()
+        {
+            return name;
         }
     }
 }
