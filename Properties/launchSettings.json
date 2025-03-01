@@ -2,6 +2,9 @@
   "profiles": {
     "Windows Machine": {
       "commandName": "Project",
+      "environmentVariables": {
+        "dbPass": "NnVaZnNvAz29!"
+      },
       "nativeDebugging": false
     }
   }

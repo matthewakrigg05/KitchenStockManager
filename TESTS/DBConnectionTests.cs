@@ -1,6 +1,3 @@
-using System;
-using Moq;
-using MySql.Data.MySqlClient;
 using Xunit;
 using Utils;
 
@@ -12,11 +9,9 @@ namespace TESTS
         [Fact]
         public async Task IsConnect_ShouldReturnTrue_WhenConnectionIsEstablished()
         {
-            // Arrange
-            var dbConnection = await DBHelper.GetConnection();
 
             // Act
-            dbConnection.Open();
+            var dbConnection = await DBHelper.GetConnection();
 
             // Assert
             Assert.True(dbConnection.State == System.Data.ConnectionState.Open);
