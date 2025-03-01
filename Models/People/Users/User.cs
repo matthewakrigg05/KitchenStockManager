@@ -29,14 +29,29 @@
             return EmailAddress;
         }
 
+        public void SetEmail(string email)
+        {
+            EmailAddress = email;
+        }
+
         public string getFirstName()
         {
             return FirstName;
         }
 
+        public void SetFirstName(string fname)
+        {
+            FirstName = fname;
+        }
+
         public string getLastName()
         {
             return LastName;
+        }
+
+        public void SetLastName(string lname)
+        {
+            LastName = lname;
         }
 
         public string getRole()
@@ -45,9 +60,19 @@
 
         }
 
+        public void SetRole(string role)
+        {
+            Role = role;
+        }
+
         public string getPassword()
         {
             return Password;
+        }
+
+        public void SetPassword(string pass)
+        {
+            Password = pass;
         }
     }
 }

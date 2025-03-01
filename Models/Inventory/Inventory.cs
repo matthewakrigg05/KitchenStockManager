@@ -2,20 +2,20 @@
 {
     class Inventory
     {
-        private List<Item> items;
-        private List<PreparedIngredient> preparedIngredients;
-        private List<RawIngredient> rawIngredients;
+        private List<Item> inventoryItems = new List<Item>();
+        private List<PreparedIngredient> preparedIngredients = new List<PreparedIngredient>();
+        private List<RawIngredient> rawIngredients = new List<RawIngredient>();
 
         public Inventory() { }
 
-        public Inventory(List<Item> inventoryItems)
+        public Inventory(List<Item> items)
         {
-            items = inventoryItems;
+            inventoryItems = items;
         }
 
         public Item? GetItem(string itemName)
         {
-            foreach (Item item in items)
+            foreach (Item item in inventoryItems)
             {
                 if (item.GetName() == itemName)
                 {
@@ -27,16 +27,13 @@
 
         public void AddItem(Item item)
         {
-            items.Add(item);
+            inventoryItems.Add(item);
         }
 
-        public void RemoveItem(string itemName)
+        public void RemoveItem(Item item)
         {
-            Item? item = GetItem(itemName);
-            if (item != null)
-            {
-                items.Remove(item);
-            }
+               inventoryItems.Remove(item);
+            
         }
 
         public void AddPreparedIngredient(PreparedIngredient preparedIngredient)
@@ -59,21 +56,21 @@
             rawIngredients.Remove(rawIngredient);
         }
 
-        public void RemoveAllItems() { items.Clear(); }
+        public void RemoveAllItems() { inventoryItems.Clear(); }
         public void clearInventory()
         {
-            items.Clear();
+            inventoryItems.Clear();
             preparedIngredients.Clear();
             rawIngredients.Clear();
         }
 
         // Getters and setters for class variables - no other methods beyond this point
 
-        public List<Item> GetItems() { return items; }
+        public List<Item> GetItems() { return inventoryItems; }
 
         public void SetItems(List<Item> inventoryItems) 
         { 
-            items = inventoryItems; 
+            this.inventoryItems = inventoryItems; 
         }
 
         public List<PreparedIngredient> GetPreparedIngredients() { return preparedIngredients; }

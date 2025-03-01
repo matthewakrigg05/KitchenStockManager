@@ -9,7 +9,7 @@ namespace KitchenStockManager.Models.People.Users
         public UserManager() { }
 
         // connect to db separately, rather than passing it down
-        public async Task<User> LogIn(string email, string pass)
+        public async Task<User?> LogIn(string email, string pass)
         {
             using (var connection = await DBHelper.GetConnection())
             {
@@ -37,7 +37,7 @@ namespace KitchenStockManager.Models.People.Users
             }
         }
 
-        public async Task<User> RegisterUser(string email, string pass, string fname, string lname)
+        public async Task<User?> RegisterUser(string email, string pass, string fname, string lname)
         {
             using (var connection = await DBHelper.GetConnection())
             {
