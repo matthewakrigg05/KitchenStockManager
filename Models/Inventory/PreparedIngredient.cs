@@ -11,24 +11,62 @@
         public PreparedIngredient(string itemName, int itemQuantity, string unitType)
             : base(itemName, itemQuantity, unitType) { }
 
-        public PreparedIngredient(string itemName, int itemQuantity, string unitType, string preparationInstructs, List<RawIngredient> ingreds)
+        public PreparedIngredient(string itemName, int itemQuantity, string unitType, string preparationInstructs)
             : base(itemName, itemQuantity, unitType)
         {
             preparationInstructions = preparationInstructs;
-            ingredients = ingreds;
         }
 
-        public PreparedIngredient(string preparationInstructs, List<PreparedIngredient> ingreds)
+        public void addRawIngredient(RawIngredient ingredient)
         {
-            preparationInstructions = preparationInstructs;
-            preparedIngredients = ingreds;
+            ingredients.Add(ingredient);
         }
 
-        public PreparedIngredient(string preparationInstructs, List<RawIngredient> ingreds, List<PreparedIngredient> preparedIngreds)
+        public void addPreparedIngredient(PreparedIngredient ingredient)
+        {
+            preparedIngredients.Add(ingredient);
+        }
+
+        public void removeRawIngredient(RawIngredient ingredient)
+        {
+            ingredients.Remove(ingredient);
+        }
+
+        public void removePreparedIngredient(PreparedIngredient ingredient)
+        {
+            preparedIngredients.Remove(ingredient);
+        }
+
+        // Getters and setters - no other methods beyond this point
+
+        public void SetPreparationInstructions(string preparationInstructs)
         {
             preparationInstructions = preparationInstructs;
-            ingredients = ingreds;
-            preparedIngredients = preparedIngreds;
+        }
+
+        public string GetPreparationInstructions()
+        {
+            return preparationInstructions;
+        }
+
+        public void SetIngredients(List<RawIngredient> ingredientList)
+        {
+            ingredients = ingredientList;
+        }
+
+        public List<RawIngredient> GetIngredients()
+        {
+            return ingredients;
+        }
+
+        public void SetPreparedIngredients(List<PreparedIngredient> preparedIngredientList)
+        {
+            preparedIngredients = preparedIngredientList;
+        }
+
+        public List<PreparedIngredient> GetPreparedIngredients()
+        {
+            return preparedIngredients;
         }
     }
 }
