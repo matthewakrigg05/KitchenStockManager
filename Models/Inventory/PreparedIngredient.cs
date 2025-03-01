@@ -17,22 +17,22 @@
             preparationInstructions = preparationInstructs;
         }
 
-        public void addRawIngredient(RawIngredient ingredient)
+        public void AddRawIngredient(RawIngredient ingredient)
         {
             ingredients.Add(ingredient);
         }
 
-        public void addPreparedIngredient(PreparedIngredient ingredient)
+        public void AddPreparedIngredient(PreparedIngredient ingredient)
         {
             preparedIngredients.Add(ingredient);
         }
 
-        public void removeRawIngredient(RawIngredient ingredient)
+        public void RemoveRawIngredient(RawIngredient ingredient)
         {
             ingredients.Remove(ingredient);
         }
 
-        public void removePreparedIngredient(PreparedIngredient ingredient)
+        public void RemovePreparedIngredient(PreparedIngredient ingredient)
         {
             preparedIngredients.Remove(ingredient);
         }

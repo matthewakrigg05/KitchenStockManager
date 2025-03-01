@@ -88,7 +88,7 @@
 
         }
 
-        public string GetType()
+        public string GetDishType()
         {
             return type;
         }

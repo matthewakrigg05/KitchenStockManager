@@ -13,7 +13,7 @@
             dishes = dish;
         }
 
-        public Dish GetDish(string dishName)
+        public Dish? GetDish(string dishName)
         {
             foreach (Dish dish in dishes)
             {

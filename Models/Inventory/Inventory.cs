@@ -30,13 +30,10 @@
             items.Add(item);
         }
 
-        public void RemoveItem(string itemName)
+        public void RemoveItem(Item item)
         {
-            Item? item = GetItem(itemName);
-            if (item != null)
-            {
-                items.Remove(item);
-            }
+               items.Remove(item);
+            
         }
 
         public void AddPreparedIngredient(PreparedIngredient preparedIngredient)
