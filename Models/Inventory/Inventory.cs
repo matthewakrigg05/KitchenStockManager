@@ -31,8 +31,35 @@
         }
 
         public void RemoveItem(string itemName) { items.Remove(GetItem(itemName)); }
+        public void RemoveItem(Item item) { items.Remove(item); }
+
+        public void AddPreparedIngredient(PreparedIngredient preparedIngredient)
+        {
+            preparedIngredients.Add(preparedIngredient);
+        }
+
+        public void RemovePreparedIngredient(PreparedIngredient preparedIngredient)
+        {
+            preparedIngredients.Remove(preparedIngredient);
+        }
+
+        public void AddRawIngredient(RawIngredient rawIngredient)
+        {
+            rawIngredients.Add(rawIngredient);
+        }
+
+        public void RemoveRawIngredient(RawIngredient rawIngredient)
+        {
+            rawIngredients.Remove(rawIngredient);
+        }
 
         public void RemoveAllItems() { items.Clear(); }
+        public void clearInventory()
+        {
+            items.Clear();
+            preparedIngredients.Clear();
+            rawIngredients.Clear();
+        }
 
         // Getters and setters for class variables - no other methods beyond this point
 
