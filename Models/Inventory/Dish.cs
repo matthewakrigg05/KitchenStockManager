@@ -7,6 +7,7 @@
         private List<PreparedIngredient> preparedIngredients;
         private string description;
         private string type;
+        private string instructions;
 
         public Dish() { }
 
@@ -38,6 +39,9 @@
             type = dishType;
         }
 
+
+        // Getters and setters - not other methods beyond this point
+
         public void SetName(string dishName)
         {
             name = dishName;
@@ -46,6 +50,57 @@
         public string GetName()
         {
             return name;
+        }
+
+        public void SetDescription(string dishDesc)
+        {
+            description = dishDesc;
+        }
+
+        public string GetDescription()
+        {
+            return description;
+        }
+
+        public void SetRawIngredients(List<RawIngredient> rawIngreds)
+        {
+            rawIngredients = rawIngreds;
+        }
+
+        public List<RawIngredient> GetRawIngredients()
+        {
+            return rawIngredients;
+        }
+
+        public void SetPreparedIngredients(List<PreparedIngredient> preparedIngreds)
+        {
+            preparedIngredients = preparedIngreds;
+        }
+
+        public List<PreparedIngredient> GetPreparedIngredients()
+        {
+            return preparedIngredients;
+        }
+
+        public void SetType(string dishType)
+        {
+            type = dishType;
+
+        }
+
+        public string GetType()
+        {
+            return type;
+        }
+
+        public void SetInstructions(string dishInstructions)
+        {
+            instructions = dishInstructions;
+        }
+
+        public string GetInstructions()
+        {
+            return instructions;
         }
     }
 }
