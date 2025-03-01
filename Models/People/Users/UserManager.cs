@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System.Net.Mail;
 using Utils;
 
 namespace KitchenStockManager.Models.People.Users
@@ -14,7 +13,7 @@ namespace KitchenStockManager.Models.People.Users
         {
             using (var connection = await DBHelper.GetConnection())
             {
-                string logInQuery = "SELECT * FROM Users (email, password) WHERE email = @email AND password = @password;";
+                string logInQuery = "SELECT * FROM users WHERE email = @email AND password = @password;";
 
                 using (MySqlCommand cmd = new MySqlCommand(logInQuery, connection))
                 {
@@ -38,12 +37,12 @@ namespace KitchenStockManager.Models.People.Users
             }
         }
 
-        public User RegisterUser(string email, string pass, string fname, string lname, MySqlConnection connection)
+        public async Task<User> RegisterUser(string email, string pass, string fname, string lname)
         {
-            using (connection)
+            using (var connection = await DBHelper.GetConnection())
             {
-                string emailQuery = "SELECT * FROM Users (email) WHERE email = @email;";
-                string insertionStatement = "INSERT INTO Users (email, password, firstName, lastName) " +
+                string emailQuery = "SELECT email FROM users WHERE email = @email;";
+                string insertionStatement = "INSERT INTO users (email, password, firstName, lastName) " +
                     "VALUES (@email, @password, @firstName, @lastName)";
 
                 using (MySqlCommand emailCmd = new MySqlCommand(emailQuery, connection))

@@ -1,27 +1,53 @@
 ﻿namespace KitchenStockManager.Models.People.Users
 {
-    internal class User
+    public class User
     {
-        private string emailAddress { get; set; }
-        private string password { get; set; }
-        private string firstName { get; set; }
-        private string lastName { get; set; }
-        private string role { get; set; }
+        private string EmailAddress { get; set; }
+        private string Password { get; set; }
+        private string FirstName { get; set; }
+        private string LastName { get; set; }
+        private string Role { get; set; }
 
         public User() { }
 
         public User(string email, string pass)
         {
-            emailAddress = email;
-            password = pass;
+            EmailAddress = email;
+            Password = pass;
         }
 
         public User(string email, string pass, string fname, string lname)
         {
-            emailAddress = email;
-            password = pass;
-            firstName = fname;
-            lastName = lname;
+            EmailAddress = email;
+            Password = pass;
+            FirstName = fname;
+            LastName = lname;
+        }
+
+        public string getEmail()
+        {
+            return EmailAddress;
+        }
+
+        public string getFirstName()
+        {
+            return FirstName;
+        }
+
+        public string getLastName()
+        {
+            return LastName;
+        }
+
+        public string getRole()
+        {
+            return Role;
+
+        }
+
+        public string getPassword()
+        {
+            return Password;
         }
     }
 }

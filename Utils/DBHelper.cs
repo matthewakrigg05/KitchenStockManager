@@ -8,9 +8,10 @@ namespace Utils
 
         public static async Task<MySqlConnection> GetConnection()
         {
-            string connstring = string.Format("Server=127.0.0.1; database=ksm; UID=root; password=pass");
+            string dbPass = Environment.GetEnvironmentVariable("dbPass") ?? throw new InvalidOperationException("Database password environment variable is not set.");
+            string connstring = string.Format($"Server=127.0.0.1; database=ksm; UID=root; password={dbPass}");
             var connection = new MySqlConnection(connstring);
-            connection.Open();
+            await connection.OpenAsync();
 
             return connection;
         }
