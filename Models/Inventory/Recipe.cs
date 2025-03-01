@@ -2,9 +2,9 @@
 {
     class Recipe
     {
-        private string instructions {  get; set; }
-        private List<PreparedIngredient> preparedIngredients { get; set; }
-        private List<RawIngredient> rawIngredients { get; set; }
+        private string instructions;
+        private List<PreparedIngredient> preparedIngredients;
+        private List<RawIngredient> rawIngredients;
     
         public Recipe() { }
 

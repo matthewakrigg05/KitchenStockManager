@@ -2,7 +2,9 @@
 {
     class Inventory
     {
-        private List<Item> items { get; set; }
+        private List<Item> items;
+        private List<PreparedIngredient> preparedIngredients;
+        private List<RawIngredient> rawIngredients;
 
         public Inventory() { }
 
@@ -39,6 +41,20 @@
         public void SetItems(List<Item> inventoryItems) 
         { 
             items = inventoryItems; 
+        }
+
+        public List<PreparedIngredient> GetPreparedIngredients() { return preparedIngredients; }
+
+        public void SetPreparedIngredients(List<PreparedIngredient> prepIngreds)
+        {
+            preparedIngredients = prepIngreds;
+        }
+
+        public List<RawIngredient> GetRawIngredients() { return rawIngredients; }
+
+        public void SetRawIngredients(List<RawIngredient> rawIngreds)
+        {
+            rawIngredients = rawIngreds;
         }
     }
 }
