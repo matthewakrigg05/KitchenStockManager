@@ -1,12 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
 using KitchenStockManager.Models.Inventory;
+using System;
 using Utils;
 
 namespace KitchenStockManager.Utils
 {
-    public class DatabaseUtils
+    public class InventoryDbTests
     {
-        private string connectionString;
 
         public async void AddItemToDatabase(Item item)
         {
@@ -26,9 +26,9 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public void AddPreparedIngredientToDatabase(PreparedIngredient preparedIngredient)
+        public async void AddPreparedIngredientToDatabase(PreparedIngredient preparedIngredient)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (var conn = await DBHelper.GetConnection())
             {
                 conn.Open();
                 string query = "INSERT INTO PreparedIngredients (Name, Quantity, Unit, Cost, Supplier, PreparationInstructions) VALUES (@Name, @Quantity, @Unit, @Cost, @Supplier, @PreparationInstructions)";
@@ -46,9 +46,9 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public void AddRawIngredientToDatabase(RawIngredient rawIngredient)
+        public async void AddRawIngredientToDatabase(RawIngredient rawIngredient)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (var conn = await DBHelper.GetConnection())
             {
                 conn.Open();
                 string query = "INSERT INTO RawIngredients (Name, Quantity, Unit, Cost, Supplier, FoodGroup) VALUES (@Name, @Quantity, @Unit, @Cost, @Supplier, @FoodGroup)";
@@ -66,11 +66,10 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public void RemoveItemFromDatabase(string itemName)
+        public async void RemoveItemFromDatabase(string itemName)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (var conn = await DBHelper.GetConnection())
             {
-                conn.Open();
                 string query = "DELETE FROM Items WHERE Name = @Name";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -80,11 +79,10 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public void RemovePreparedIngredientFromDatabase(string itemName)
+        public async void RemovePreparedIngredientFromDatabase(string itemName)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (var conn = await DBHelper.GetConnection())
             {
-                conn.Open();
                 string query = "DELETE FROM PreparedIngredients WHERE Name = @Name";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -94,11 +92,10 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public void RemoveRawIngredientFromDatabase(string itemName)
+        public async void RemoveRawIngredientFromDatabase(string itemName)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (var conn = await DBHelper.GetConnection())
             {
-                conn.Open();
                 string query = "DELETE FROM RawIngredients WHERE Name = @Name";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -108,11 +105,10 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public void UpdateItemInDatabase(Item item)
+        public async void UpdateItemInDatabase(Item item)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (var conn = await DBHelper.GetConnection())
             {
-                conn.Open();
                 string query = "UPDATE Items SET Quantity = @Quantity, Unit = @Unit, Cost = @Cost, Supplier = @Supplier WHERE Name = @Name";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -127,11 +123,10 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public void UpdatePreparedIngredientInDatabase(PreparedIngredient preparedIngredient)
+        public async void UpdatePreparedIngredientInDatabase(PreparedIngredient preparedIngredient)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (var conn = await DBHelper.GetConnection())
             {
-                conn.Open();
                 string query = "UPDATE PreparedIngredients SET Quantity = @Quantity, Unit = @Unit, Cost = @Cost, Supplier = @Supplier, PreparationInstructions = @PreparationInstructions WHERE Name = @Name";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -147,11 +142,10 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public void UpdateRawIngredientInDatabase(RawIngredient rawIngredient)
+        public async void UpdateRawIngredientInDatabase(RawIngredient rawIngredient)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (var conn = await DBHelper.GetConnection())
             {
-                conn.Open();
                 string query = "UPDATE RawIngredients SET Quantity = @Quantity, Unit = @Unit, Cost = @Cost, Supplier = @Supplier, FoodGroup = @FoodGroup WHERE Name = @Name";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
