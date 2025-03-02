@@ -1,7 +1,7 @@
 ﻿using KitchenStockManager.Models.People.Users;
 using Xunit;
 
-namespace KitchenStockManager.TESTS
+namespace KitchenStockManager.TESTS.DatabaseTests
 {
     public class UserMnanagementTests
     {
