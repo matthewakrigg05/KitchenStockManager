@@ -1,14 +1,13 @@
 ﻿using MySql.Data.MySqlClient;
 using KitchenStockManager.Models.Inventory;
-using System;
 using Utils;
 
 namespace KitchenStockManager.Utils
 {
-    public class InventoryDbTests
+    public static class InventoryDbTests
     {
 
-        public async void AddItemToDatabase(Item item)
+        public static async void AddItemToDatabase(Item item)
         {
             using (var conn = await DBHelper.GetConnection())
             {
@@ -26,7 +25,7 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public async void AddPreparedIngredientToDatabase(PreparedIngredient preparedIngredient)
+        public static async void AddPreparedIngredientToDatabase(PreparedIngredient preparedIngredient)
         {
             using (var conn = await DBHelper.GetConnection())
             {
@@ -46,7 +45,7 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public async void AddRawIngredientToDatabase(RawIngredient rawIngredient)
+        public static async void AddRawIngredientToDatabase(RawIngredient rawIngredient)
         {
             using (var conn = await DBHelper.GetConnection())
             {
@@ -66,7 +65,7 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public async void RemoveItemFromDatabase(string itemName)
+        public static async void RemoveItemFromDatabase(string itemName)
         {
             using (var conn = await DBHelper.GetConnection())
             {
@@ -79,7 +78,7 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public async void RemovePreparedIngredientFromDatabase(string itemName)
+        public static async void RemovePreparedIngredientFromDatabase(string itemName)
         {
             using (var conn = await DBHelper.GetConnection())
             {
@@ -92,7 +91,7 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public async void RemoveRawIngredientFromDatabase(string itemName)
+        public static async void RemoveRawIngredientFromDatabase(string itemName)
         {
             using (var conn = await DBHelper.GetConnection())
             {
@@ -105,7 +104,7 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public async void UpdateItemInDatabase(Item item)
+        public static async void UpdateItemInDatabase(Item item)
         {
             using (var conn = await DBHelper.GetConnection())
             {
@@ -123,7 +122,7 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public async void UpdatePreparedIngredientInDatabase(PreparedIngredient preparedIngredient)
+        public static async void UpdatePreparedIngredientInDatabase(PreparedIngredient preparedIngredient)
         {
             using (var conn = await DBHelper.GetConnection())
             {
@@ -142,7 +141,7 @@ namespace KitchenStockManager.Utils
             }
         }
 
-        public async void UpdateRawIngredientInDatabase(RawIngredient rawIngredient)
+        public static async void UpdateRawIngredientInDatabase(RawIngredient rawIngredient)
         {
             using (var conn = await DBHelper.GetConnection())
             {
