@@ -1,12 +1,14 @@
 ﻿using KitchenStockManager.Models.Inventory;
+using KitchenStockManager.Utils;
 using MySql.Data.MySqlClient;
-using Utils.DBInventory;
+using Utils;
 using Xunit;
 
 namespace KitchenStockManager.TESTS
 {
     public class InventoryDbTests
     {
+
         [Fact]
         public async Task AddItemToDatabase_ShouldAddItem()
         {
@@ -14,7 +16,7 @@ namespace KitchenStockManager.TESTS
             var item = new Item("Apple", 10, "kg");
 
             // Act
-            await DBItems.AddItemToDatabase(item);
+            DBInventory.AddItemToDatabase(item);
 
             // Assert
             using (var conn = await DBHelper.GetConnection())
@@ -34,10 +36,10 @@ namespace KitchenStockManager.TESTS
         {
             // Arrange
             var item = new Item("Apple", 10, "kg");
-            await DBInventory.AddItemToDatabase(item);
+            DBInventory.AddItemToDatabase(item);
 
             // Act
-            await DBInventory.RemoveItemFromDatabase(item.GetName());
+            DBInventory.RemoveItemFromDatabase(item.GetName());
 
             // Assert
             using (var conn = await DBHelper.GetConnection())
@@ -57,11 +59,11 @@ namespace KitchenStockManager.TESTS
         {
             // Arrange
             var item = new Item("Apple", 10, "kg");
-            await _dbUtils.AddItemToDatabase(item);
+            DBInventory.AddItemToDatabase(item);
             item.SetQuantity(20);
 
             // Act
-            await _dbUtils.UpdateItemInDatabase(item);
+            DBInventory.UpdateItemInDatabase(item);
 
             // Assert
             using (var conn = await DBHelper.GetConnection())
@@ -83,7 +85,7 @@ namespace KitchenStockManager.TESTS
             var preparedIngredient = new PreparedIngredient("Apple Pie", 5, "pcs", "Bake at 350 degrees for 45 minutes");
 
             // Act
-            await _dbUtils.AddPreparedIngredientToDatabase(preparedIngredient);
+            DBInventory.AddPreparedIngredientToDatabase(preparedIngredient);
 
             // Assert
             using (var conn = await DBHelper.GetConnection())
@@ -103,10 +105,10 @@ namespace KitchenStockManager.TESTS
         {
             // Arrange
             var preparedIngredient = new PreparedIngredient("Apple Pie", 5, "pcs", "Bake at 350 degrees for 45 minutes");
-            await _dbUtils.AddPreparedIngredientToDatabase(preparedIngredient);
+            DBInventory.AddPreparedIngredientToDatabase(preparedIngredient);
 
             // Act
-            await _dbUtils.RemovePreparedIngredientFromDatabase(preparedIngredient.GetName());
+            DBInventory.RemovePreparedIngredientFromDatabase(preparedIngredient.GetName());
 
             // Assert
             using (var conn = await DBHelper.GetConnection())
@@ -126,11 +128,11 @@ namespace KitchenStockManager.TESTS
         {
             // Arrange
             var preparedIngredient = new PreparedIngredient("Apple Pie", 5, "pcs", "Bake at 350 degrees for 45 minutes");
-            await _dbUtils.AddPreparedIngredientToDatabase(preparedIngredient);
+            DBInventory.AddPreparedIngredientToDatabase(preparedIngredient);
             preparedIngredient.SetQuantity(10);
 
             // Act
-            await _dbUtils.UpdatePreparedIngredientInDatabase(preparedIngredient);
+            DBInventory.UpdatePreparedIngredientInDatabase(preparedIngredient);
 
             // Assert
             using (var conn = await DBHelper.GetConnection())
@@ -152,7 +154,7 @@ namespace KitchenStockManager.TESTS
             var rawIngredient = new RawIngredient("Flour", 50, "kg", 20.0f);
 
             // Act
-            await _dbUtils.AddRawIngredientToDatabase(rawIngredient);
+            DBInventory.AddRawIngredientToDatabase(rawIngredient);
 
             // Assert
             using (var conn = await DBHelper.GetConnection())
@@ -172,10 +174,10 @@ namespace KitchenStockManager.TESTS
         {
             // Arrange
             var rawIngredient = new RawIngredient("Flour", 50, "kg", 20.0f);
-            await _dbUtils.AddRawIngredientToDatabase(rawIngredient);
+            DBInventory.AddRawIngredientToDatabase(rawIngredient);
 
             // Act
-            await _dbUtils.RemoveRawIngredientFromDatabase(rawIngredient.GetName());
+            DBInventory.RemoveRawIngredientFromDatabase(rawIngredient.GetName());
 
             // Assert
             using (var conn = await DBHelper.GetConnection())
@@ -195,11 +197,11 @@ namespace KitchenStockManager.TESTS
         {
             // Arrange
             var rawIngredient = new RawIngredient("Flour", 50, "kg", 20.0f);
-            await _dbUtils.AddRawIngredientToDatabase(rawIngredient);
+            DBInventory.AddRawIngredientToDatabase(rawIngredient);
             rawIngredient.SetQuantity(100);
 
             // Act
-            await _dbUtils.UpdateRawIngredientInDatabase(rawIngredient);
+            DBInventory.UpdateRawIngredientInDatabase(rawIngredient);
 
             // Assert
             using (var conn = await DBHelper.GetConnection())

@@ -4,7 +4,7 @@ using Utils;
 
 namespace KitchenStockManager.Utils
 {
-    public static class InventoryDbTests
+    public static class DBInventory
     {
 
         public static async void AddItemToDatabase(Item item)
