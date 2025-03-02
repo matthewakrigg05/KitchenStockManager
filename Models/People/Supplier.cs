@@ -6,5 +6,11 @@
 
         public Supplier(string firstName, string contactNumber, string email) 
             : base(firstName, contactNumber, email) { }
+
+        public string GetName()
+        {
+            return firstName;
+        }
     }
+
 }
