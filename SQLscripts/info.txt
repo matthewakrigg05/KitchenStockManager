@@ -1,0 +1,2 @@
+﻿The scripts in this folder have no role in this program. Theyre here as a reference and as information about the structure of the database.
+They are also for my own reference as I currently have to impplement the database locally on two different machines!

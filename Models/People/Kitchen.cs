@@ -2,8 +2,8 @@
 {
     class Kitchen
     {
-        private List<Staff> staffList { get; set; }
-        private string kitchenName { get; set; }
+        private List<Staff> staffList;
+        private string kitchenName;
 
         public Kitchen() { }
 

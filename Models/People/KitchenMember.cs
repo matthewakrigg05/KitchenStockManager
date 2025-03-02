@@ -2,7 +2,7 @@
 {
     class KitchenMember : Staff
     {
-        private string kitchenRole { get; set; }
+        private string kitchenRole;
 
         public KitchenMember() { }
 

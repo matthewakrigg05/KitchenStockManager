@@ -2,7 +2,7 @@
 {
     class Staff : Person
     {
-        private string staffRole { get; set; }
+        private string staffRole;
 
         public Staff() { }
 
