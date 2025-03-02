@@ -1,7 +1,7 @@
 using Xunit;
 using Utils;
 
-namespace TESTS
+namespace KitchenStockManager.TESTS.DatabaseTests
 {
     public class DBConnectionTests
     {
