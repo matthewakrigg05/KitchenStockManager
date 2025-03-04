@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KitchenStockManager.SQLscripts
-{
-    class SupplierTable
-    {
-    }
-}
+﻿CREATE TABLE Suppliers (
+    supplierId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    firstName VARCHAR(100) NOT NULL,
+    contactNumber VARCHAR(50),
+    email VARCHAR(250)
+);
