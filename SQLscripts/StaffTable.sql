@@ -6,6 +6,7 @@
     contactNumber VARCHAR(50),
     position VARCHAR(100),
     userId INT,
-    FOREIGN KEY (userId) REFERENCES Users(userId)
+    restaurantId INT,
+    FOREIGN KEY (userId) REFERENCES Users(userId),
+    FOREIGN KEY (restaurantId) REFERENCES Restaurants(restaurantId)
 );
-
