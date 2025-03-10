@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Crypto.Generators;
 
 namespace Utils
 {
@@ -12,6 +13,11 @@ namespace Utils
             await connection.OpenAsync();
 
             return connection;
+        }
+
+        public static string Encrypt(string password)
+        {
+            return password;
         }
     }
 }
