@@ -62,7 +62,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Resources\Images\" />
-	  <Folder Include="TESTS\PeopleTests\" />
 	</ItemGroup>
 
 </Project>
