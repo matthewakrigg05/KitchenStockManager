@@ -15,7 +15,7 @@ namespace KitchenStockManager.TESTS.PeopleTests
             string lastName = "Doe";
 
             // Act
-            User user = await UserManager.RegisterUser(email, password, firstName, lastName);
+            User? user = await UserManager.RegisterUser(email, password, firstName, lastName);
 
             // Assert
             Assert.NotNull(user);
@@ -56,7 +56,7 @@ namespace KitchenStockManager.TESTS.PeopleTests
         }
 
         [Fact]
-        public async void RegisterUser_ShouldReturnNull_WhenEmailAlreadyExists()
+        public async Task RegisterUser_ShouldReturnNull_WhenEmailAlreadyExists()
         {
             // Arrange
             string email = "existing@example.com";

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using KitchenStockManager.Utils;
+using MySql.Data.MySqlClient;
 using Utils;
 
 namespace KitchenStockManager.Models.People.Users
@@ -9,9 +10,8 @@ namespace KitchenStockManager.Models.People.Users
         {
             using (var connection = await DBHelper.GetConnection())
             {
-                string logInQuery = "SELECT * FROM users WHERE email = @email AND password = @password;";
 
-                using (MySqlCommand cmd = new MySqlCommand(logInQuery, connection))
+                using (MySqlCommand cmd = new MySqlCommand(SQLQueries.logInQuery, connection))
                 {
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@password", pass);
@@ -31,12 +31,9 @@ namespace KitchenStockManager.Models.People.Users
         {
             using (var connection = await DBHelper.GetConnection())
             {
-                string emailQuery = "SELECT email FROM users WHERE email = @email;";
+                
 
-                string insertionStatement = "INSERT INTO users (email, password, firstName, lastName) " +
-                    "VALUES (@email, @password, @firstName, @lastName)";
-
-                using (MySqlCommand emailCmd = new MySqlCommand(emailQuery, connection))
+                using (MySqlCommand emailCmd = new MySqlCommand(SQLQueries.emailQuery, connection))
                 {
                     emailCmd.Parameters.AddWithValue("@email", email);
                     emailCmd.Prepare();
@@ -47,7 +44,7 @@ namespace KitchenStockManager.Models.People.Users
                     }   
                 }
 
-                using (MySqlCommand insertCmd = new MySqlCommand(insertionStatement, connection))
+                using (MySqlCommand insertCmd = new MySqlCommand(SQLQueries.insertionUserStatement, connection))
                 {
                     insertCmd.Parameters.AddWithValue("@email", email);
                     insertCmd.Parameters.AddWithValue("@password", pass);
