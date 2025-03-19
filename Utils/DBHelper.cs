@@ -6,8 +6,10 @@ namespace Utils
 {
     public static class DBHelper
     {
+        // Method for accessing conenections from conection pool
         public static async Task<MySqlConnection> GetConnection()
         {
+            // DB pass cannot be published, use sysenv named dbPass
             string dbPass = Environment.GetEnvironmentVariable("dbPass") ?? throw new InvalidOperationException("Database password environment variable is not set.");
 
             string connstring = string.Format($"Server=127.0.0.1; database=ksm; UID=root; password={dbPass}");
@@ -21,6 +23,7 @@ namespace Utils
         {
             using (var sha256 = SHA256.Create())
             {
+                // salt also hidden as a sysenv, cannot be published
                 string saltString = Environment.GetEnvironmentVariable("salt") ?? throw new InvalidOperationException("Salt environment variable is not set.");
                 byte[] salt = Encoding.ASCII.GetBytes(saltString);
 
