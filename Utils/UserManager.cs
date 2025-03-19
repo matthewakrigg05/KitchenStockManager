@@ -5,8 +5,6 @@ namespace KitchenStockManager.Models.People.Users
 {
     static class UserManager
     {
-
-        // connect to db separately, rather than passing it down
         public static async Task<User?> LogIn(string email, string pass)
         {
             using (var connection = await DBHelper.GetConnection())
@@ -19,17 +17,11 @@ namespace KitchenStockManager.Models.People.Users
                     cmd.Parameters.AddWithValue("@password", pass);
                     cmd.Prepare();
 
-                    MySqlDataReader result = cmd.ExecuteReader();
+                    using (MySqlDataReader result = cmd.ExecuteReader())
+                    {
+                        if (!result.HasRows) return null;
 
-                    if (!result.HasRows)
-                    {
-                        Console.WriteLine("Log In has failed");
-                        result.Close();
-                        return null;
-                    }
-                    else
-                    {
-                        return new User(email, pass);
+                        else return new User(email, pass);
                     }
                 }
             }
@@ -40,6 +32,7 @@ namespace KitchenStockManager.Models.People.Users
             using (var connection = await DBHelper.GetConnection())
             {
                 string emailQuery = "SELECT email FROM users WHERE email = @email;";
+
                 string insertionStatement = "INSERT INTO users (email, password, firstName, lastName) " +
                     "VALUES (@email, @password, @firstName, @lastName)";
 
@@ -50,11 +43,7 @@ namespace KitchenStockManager.Models.People.Users
 
                     using (MySqlDataReader result = emailCmd.ExecuteReader())
                     {
-                        if (result.HasRows)
-                        {
-                            Console.WriteLine("Registration has failed - email already taken!");
-                            return null;
-                        }
+                        if (result.HasRows) return null;
                     }   
                 }
 
@@ -68,18 +57,10 @@ namespace KitchenStockManager.Models.People.Users
 
                     int rows = insertCmd.ExecuteNonQuery();
 
-                    if (rows == 1)
-                    {
-                        Console.WriteLine("Successfully registered a new user!");
-                        return new User(email, pass, fname, lname); ;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Unsuccessful registration.");
-                        return null;
-                    }
-                }
+                    if (rows == 1) return new User(email, pass, fname, lname);
 
+                    else return null;
+                }
             }
         }
     }
