@@ -1,0 +1,1 @@
+C:\Users\matth\source\repos\matthewakrigg05\KitchenStockManager\bin\Debug\net9.0-maccatalyst\maccatalyst-x64\publish\KitchenStockManager.deps.json
