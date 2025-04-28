@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KitchenStockManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae3b87ffb304c33041523870d00120dc561eabc1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+00de7b5eb0b610697df05a3c8daae95159d5a9e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("KitchenStockManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KitchenStockManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
