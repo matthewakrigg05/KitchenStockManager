@@ -4,7 +4,7 @@ using KitchenStockManager.Models.People.Users;
 namespace KitchenStockManager.Controllers.PeopleControllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[auth]")]
     public class AuthController : ControllerBase
     {
         [HttpPost("login")]

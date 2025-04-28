@@ -1,5 +1,6 @@
 This project is one that I have chosen to do to transfer my knowledge from other languages, such as Java, and 
-learn C# from it - in a hands on manner. The aim of this project is to create a kitchen/restaurant management system.
+learn C# from it - in a hands on manner. The aim of this project is to create a kitchen/restaurant management API.
+I am building a backend and database that would be used to work with the front end of a restaurant management system.
 In it you should be able to do the following:
 - [ ] Add/Remove ingredients
 - [ ] Create recipes and dishes
