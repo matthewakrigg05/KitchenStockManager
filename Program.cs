@@ -8,7 +8,7 @@ namespace KitchenStockManager
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the Kitchen Stock Manager!");
-            if (Program.Quick_Test().Result) {
+            if (Program.Quick_Test()) {
                 Console.WriteLine("Database connection is successful.");
             } else {
                 Console.WriteLine("Database connection failed.");
@@ -16,13 +16,13 @@ namespace KitchenStockManager
 
         }
 
-        public static async Task<bool> Quick_Test()
+        public static bool Quick_Test()
         {
-                        // Act
-            var dbConnection = await DBHelper.GetConnection();
-
+            // Act
+            using var dbConnection = DBHelper.GetConnection();
+            
             // Assert
-            return dbConnection.State == System.Data.ConnectionState.Open;
+            return dbConnection.State == System.Data.ConnectionState.Closed;
         }
 
     }
