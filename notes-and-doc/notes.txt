@@ -1,0 +1,3 @@
+Converting to sqlite, new plan is to operate the application using sqlite on own machines,
+then eventually add the option to add users and a subscription service where the data from
+local sqlite db can be backed up, versions saved, backup files such as orders, preparation lists etc.

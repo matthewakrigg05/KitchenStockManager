@@ -1,219 +1,224 @@
-﻿using KitchenStockManager.Models.Inventory;
-using KitchenStockManager.Utils;
-using MySql.Data.MySqlClient;
-using Utils;
-using Xunit;
+﻿// using KitchenStockManager.Models.Inventory;
+// using KitchenStockManager.Utils;
+// using MySql.Data.MySqlClient;
+// using Org.BouncyCastle.Cms;
+// using Utils;
+// using Xunit;
 
-namespace KitchenStockManager.TESTS
-{
-    public class InventoryDbTests
-    {
+// namespace KitchenStockManager.TESTS
+// {
+//     public class InventoryDbTests
+//     {
 
-        [Fact]
-        public async Task AddItemToDatabase_ShouldAddItem()
-        {
-            // Arrange
-            var item = new Item("Apple", 10, "kg");
+//         [Fact]
+//         public async Task AddItemToDatabase_ShouldAddItem()
+//         {
+//             // Arrange
+//             var item = new Item("Apple", 10, "kg");
 
-            // Act
-            DBInventory.AddItemToDatabase(item);
+//             // Act
+//             DBInventory.AddItemToDatabase(item);
 
-            // Assert
-            using (var conn = await DBHelper.GetConnection())
-            {
-                string query = "SELECT COUNT(*) FROM Items WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Name", item.GetName());
-                    var count = (long)cmd.ExecuteScalar();
-                    Assert.Equal(1, count);
-                }
-            }
-        }
+//             // Assert
+//             using (var conn = await DBHelper.GetConnection())
+//             {
+//                 using (var cmd = conn.CreateCommand())
+//                 {
+//                     cmd.CommandText = "SELECT COUNT(*) FROM Items WHERE Name = @Name";
+//                     cmd.Parameters.AddWithValue("@Name", item.GetName());
 
-        [Fact]
-        public async Task RemoveItemFromDatabase_ShouldRemoveItem()
-        {
-            // Arrange
-            var item = new Item("Apple", 10, "kg");
-            DBInventory.AddItemToDatabase(item);
+//                     var count = cmd.ExecuteScalar();
+//                     Assert.Equal(1, count);
+//                 }
+//             }
+//         }
 
-            // Act
-            DBInventory.RemoveItemFromDatabase(item.GetName());
+//         [Fact]
+//         public async Task RemoveItemFromDatabase_ShouldRemoveItem()
+//         {
+//             // Arrange
+//             var item = new Item("Apple", 10, "kg");
+//             DBInventory.AddItemToDatabase(item);
 
-            // Assert
-            using (var conn = await DBHelper.GetConnection())
-            {
-                string query = "SELECT COUNT(*) FROM Items WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Name", item.GetName());
-                    var count = (long)cmd.ExecuteScalar();
-                    Assert.Equal(0, count);
-                }
-            }
-        }
+//             // Act
+//             DBInventory.RemoveItemFromDatabase(item.GetName());
 
-        [Fact]
-        public async Task UpdateItemInDatabase_ShouldUpdateItem()
-        {
-            // Arrange
-            var item = new Item("Apple", 10, "kg");
-            DBInventory.AddItemToDatabase(item);
-            item.SetQuantity(20);
+//             // Assert
+//             using (var conn = await DBHelper.GetConnection())
+//             {
+                
+//                 using (var cmd = conn.CreateCommand())
+//                 {
+//                     cmd.CommandText = "SELECT COUNT(*) FROM Items WHERE Name = @Name"; 
+//                     cmd.Parameters.AddWithValue("@Name", item.GetName());
+//                     var count = cmd.ExecuteScalar();
+//                     Assert.Equal(0, count);
+//                 }
+//             }
+//         }
 
-            // Act
-            DBInventory.UpdateItemInDatabase(item);
+//         [Fact]
+//         public async Task UpdateItemInDatabase_ShouldUpdateItem()
+//         {
+//             // Arrange
+//             var item = new Item("Apple", 10, "kg");
+//             DBInventory.AddItemToDatabase(item);
+//             item.SetQuantity(20);
 
-            // Assert
-            using (var conn = await DBHelper.GetConnection())
-            {
-                string query = "SELECT Quantity FROM Items WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Name", item.GetName());
-                    var quantity = (int)cmd.ExecuteScalar();
-                    Assert.Equal(20, quantity);
-                }
-            }
-        }
+//             // Act
+//             DBInventory.UpdateItemInDatabase(item);
 
-        [Fact]
-        public async Task AddPreparedIngredientToDatabase_ShouldAddPreparedIngredient()
-        {
-            // Arrange
-            var preparedIngredient = new PreparedIngredient("Apple Pie", 5, "pcs", "Bake at 350 degrees for 45 minutes");
+//             // Assert
+//             using (var conn = await DBHelper.GetConnection())
+//             {
+//                 using (var cmd = conn.CreateCommand())
+//                 {
+//                     cmd.CommandText = "SELECT Quantity FROM Items WHERE Name = @Name";
+//                     cmd.Parameters.AddWithValue("@Name", item.GetName());
+//                     var quantity = cmd.ExecuteScalar();
+//                     Assert.Equal(20, quantity);
+//                 }
+//             }
+//         }
 
-            // Act
-            DBInventory.AddPreparedIngredientToDatabase(preparedIngredient);
+//         [Fact]
+//         public async Task AddPreparedIngredientToDatabase_ShouldAddPreparedIngredient()
+//         {
+//             // Arrange
+//             var preparedIngredient = new PreparedIngredient("Apple Pie", 5, "pcs", "Bake at 350 degrees for 45 minutes");
 
-            // Assert
-            using (var conn = await DBHelper.GetConnection())
-            {
-                string query = "SELECT COUNT(*) FROM PreparedIngredients WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Name", preparedIngredient.GetName());
-                    var count = (long)cmd.ExecuteScalar();
-                    Assert.Equal(1, count);
-                }
-            }
-        }
+//             // Act
+//             DBInventory.AddPreparedIngredientToDatabase(preparedIngredient);
 
-        [Fact]
-        public async Task RemovePreparedIngredientFromDatabase_ShouldRemovePreparedIngredient()
-        {
-            // Arrange
-            var preparedIngredient = new PreparedIngredient("Apple Pie", 5, "pcs", "Bake at 350 degrees for 45 minutes");
-            DBInventory.AddPreparedIngredientToDatabase(preparedIngredient);
+//             // Assert
+//             using (var conn = await DBHelper.GetConnection())
+//             {
+                
+//                 using (var cmd = conn.CreateCommand())
+//                 {
+//                     cmd.CommandText = "SELECT COUNT(*) FROM PreparedIngredients WHERE Name = @Name";
+//                     cmd.Parameters.AddWithValue("@Name", preparedIngredient.GetName());
+//                     var count = cmd.ExecuteScalar();
+//                     Assert.Equal(1, count);
+//                 }
+//             }
+//         }
 
-            // Act
-            DBInventory.RemovePreparedIngredientFromDatabase(preparedIngredient.GetName());
+//         [Fact]
+//         public async Task RemovePreparedIngredientFromDatabase_ShouldRemovePreparedIngredient()
+//         {
+//             // Arrange
+//             var preparedIngredient = new PreparedIngredient("Apple Pie", 5, "pcs", "Bake at 350 degrees for 45 minutes");
+//             DBInventory.AddPreparedIngredientToDatabase(preparedIngredient);
 
-            // Assert
-            using (var conn = await DBHelper.GetConnection())
-            {
-                string query = "SELECT COUNT(*) FROM PreparedIngredients WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Name", preparedIngredient.GetName());
-                    var count = (long)cmd.ExecuteScalar();
-                    Assert.Equal(0, count);
-                }
-            }
-        }
+//             // Act
+//             DBInventory.RemovePreparedIngredientFromDatabase(preparedIngredient.GetName());
 
-        [Fact]
-        public async Task UpdatePreparedIngredientInDatabase_ShouldUpdatePreparedIngredient()
-        {
-            // Arrange
-            var preparedIngredient = new PreparedIngredient("Apple Pie", 5, "pcs", "Bake at 350 degrees for 45 minutes");
-            DBInventory.AddPreparedIngredientToDatabase(preparedIngredient);
-            preparedIngredient.SetQuantity(10);
+//             // Assert
+//             using (var conn = await DBHelper.GetConnection())
+//             {
+//                 using (var cmd = conn.CreateCommand())
+//                 {
+//                     cmd.CommandText =  "SELECT COUNT(*) FROM PreparedIngredients WHERE Name = @Name";
+//                     cmd.Parameters.AddWithValue("@Name", preparedIngredient.GetName());
+//                     var count = cmd.ExecuteScalar();
+//                     Assert.Equal(0, count);
+//                 }
+//             }
+//         }
 
-            // Act
-            DBInventory.UpdatePreparedIngredientInDatabase(preparedIngredient);
+//         [Fact]
+//         public async Task UpdatePreparedIngredientInDatabase_ShouldUpdatePreparedIngredient()
+//         {
+//             // Arrange
+//             var preparedIngredient = new PreparedIngredient("Apple Pie", 5, "pcs", "Bake at 350 degrees for 45 minutes");
+//             DBInventory.AddPreparedIngredientToDatabase(preparedIngredient);
+//             preparedIngredient.SetQuantity(10);
 
-            // Assert
-            using (var conn = await DBHelper.GetConnection())
-            {
-                string query = "SELECT Quantity FROM PreparedIngredients WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Name", preparedIngredient.GetName());
-                    var quantity = (int)cmd.ExecuteScalar();
-                    Assert.Equal(10, quantity);
-                }
-            }
-        }
+//             // Act
+//             DBInventory.UpdatePreparedIngredientInDatabase(preparedIngredient);
 
-        [Fact]
-        public async Task AddRawIngredientToDatabase_ShouldAddRawIngredient()
-        {
-            // Arrange
-            var rawIngredient = new RawIngredient("Flour", 50, "kg", 20.0f);
+//             // Assert
+//             using (var conn = await DBHelper.GetConnection())
+//             {
+//                 using (var cmd = conn.CreateCommand())
+//                 {
+//                     cmd.CommandText = "SELECT Quantity FROM PreparedIngredients WHERE Name = @Name";
+//                     cmd.Parameters.AddWithValue("@Name", preparedIngredient.GetName());
+//                     var quantity = cmd.ExecuteScalar();
+//                     Assert.Equal(10, quantity);
+//                 }
+//             }
+//         }
 
-            // Act
-            DBInventory.AddRawIngredientToDatabase(rawIngredient);
+//         [Fact]
+//         public async Task AddRawIngredientToDatabase_ShouldAddRawIngredient()
+//         {
+//             // Arrange
+//             var rawIngredient = new RawIngredient("Flour", 50, "kg", 20.0f);
 
-            // Assert
-            using (var conn = await DBHelper.GetConnection())
-            {
-                string query = "SELECT COUNT(*) FROM RawIngredients WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Name", rawIngredient.GetName());
-                    var count = (long)cmd.ExecuteScalar();
-                    Assert.Equal(1, count);
-                }
-            }
-        }
+//             // Act
+//             DBInventory.AddRawIngredientToDatabase(rawIngredient);
 
-        [Fact]
-        public async Task RemoveRawIngredientFromDatabase_ShouldRemoveRawIngredient()
-        {
-            // Arrange
-            var rawIngredient = new RawIngredient("Flour", 50, "kg", 20.0f);
-            DBInventory.AddRawIngredientToDatabase(rawIngredient);
+//             // Assert
+//             using (var conn = await DBHelper.GetConnection())
+//             {
+                
+//                 using (var cmd = conn.CreateCommand())
+//                 {
+//                     cmd.CommandText = "SELECT COUNT(*) FROM RawIngredients WHERE Name = @Name";
+//                     cmd.Parameters.AddWithValue("@Name", rawIngredient.GetName());
+//                     var count = cmd.ExecuteScalar();
+//                     Assert.Equal(1, count);
+//                 }
+//             }
+//         }
 
-            // Act
-            DBInventory.RemoveRawIngredientFromDatabase(rawIngredient.GetName());
+//         [Fact]
+//         public async Task RemoveRawIngredientFromDatabase_ShouldRemoveRawIngredient()
+//         {
+//             // Arrange
+//             var rawIngredient = new RawIngredient("Flour", 50, "kg", 20.0f);
+//             DBInventory.AddRawIngredientToDatabase(rawIngredient);
 
-            // Assert
-            using (var conn = await DBHelper.GetConnection())
-            {
-                string query = "SELECT COUNT(*) FROM RawIngredients WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Name", rawIngredient.GetName());
-                    var count = (long)cmd.ExecuteScalar();
-                    Assert.Equal(0, count);
-                }
-            }
-        }
+//             // Act
+//             DBInventory.RemoveRawIngredientFromDatabase(rawIngredient.GetName());
 
-        [Fact]
-        public async Task UpdateRawIngredientInDatabase_ShouldUpdateRawIngredient()
-        {
-            // Arrange
-            var rawIngredient = new RawIngredient("Flour", 50, "kg", 20.0f);
-            DBInventory.AddRawIngredientToDatabase(rawIngredient);
-            rawIngredient.SetQuantity(100);
+//             // Assert
+//             using (var conn = await DBHelper.GetConnection())
+//             {
+//                 using (var cmd = conn.CreateCommand())
+//                 {
+//                     cmd.CommandText = "SELECT COUNT(*) FROM RawIngredients WHERE Name = @Name";
+//                     cmd.Parameters.AddWithValue("@Name", rawIngredient.GetName());
+//                     var count = cmd.ExecuteScalar();
+//                     Assert.Equal(0, count);
+//                 }
+//             }
+//         }
 
-            // Act
-            DBInventory.UpdateRawIngredientInDatabase(rawIngredient);
+//         [Fact]
+//         public async Task UpdateRawIngredientInDatabase_ShouldUpdateRawIngredient()
+//         {
+//             // Arrange
+//             var rawIngredient = new RawIngredient("Flour", 50, "kg", 20.0f);
+//             DBInventory.AddRawIngredientToDatabase(rawIngredient);
+//             rawIngredient.SetQuantity(100);
 
-            // Assert
-            using (var conn = await DBHelper.GetConnection())
-            {
-                string query = "SELECT Quantity FROM RawIngredients WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Name", rawIngredient.GetName());
-                    var quantity = (int)cmd.ExecuteScalar();
-                    Assert.Equal(100, quantity);
-                }
-            }
-        }
-    }
-}
+//             // Act
+//             DBInventory.UpdateRawIngredientInDatabase(rawIngredient);
+
+//             // Assert
+//             using (var conn = await DBHelper.GetConnection())
+//             {
+//                 using (var cmd = conn.CreateCommand())
+//                 {
+//                     cmd.CommandText = "SELECT Quantity FROM RawIngredients WHERE Name = @Name";
+//                     cmd.Parameters.AddWithValue("@Name", rawIngredient.GetName());
+//                     var quantity = cmd.ExecuteScalar();
+//                     Assert.Equal(100, quantity);
+//                 }
+//             }
+//         }
+//     }
+// }
