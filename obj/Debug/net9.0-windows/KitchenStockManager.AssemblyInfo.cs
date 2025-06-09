@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KitchenStockManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ded13f8af360e4362badb310207dde40faaa667a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b7e9022cd26bf31a9229ebbfec6b840fc246b613")]
 [assembly: System.Reflection.AssemblyProductAttribute("KitchenStockManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KitchenStockManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

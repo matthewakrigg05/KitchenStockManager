@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\CODING\\KitchenStockManager\\KitchenStockManager.csproj": {}
+    "C:\\CODING\\KitchenStockManager\\KitchenStockManager.csproj": {}
   },
   "projects": {
-    "c:\\CODING\\KitchenStockManager\\KitchenStockManager.csproj": {
+    "C:\\CODING\\KitchenStockManager\\KitchenStockManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\CODING\\KitchenStockManager\\KitchenStockManager.csproj",
+        "projectUniqueName": "C:\\CODING\\KitchenStockManager\\KitchenStockManager.csproj",
         "projectName": "KitchenStockManager",
-        "projectPath": "c:\\CODING\\KitchenStockManager\\KitchenStockManager.csproj",
+        "projectPath": "C:\\CODING\\KitchenStockManager\\KitchenStockManager.csproj",
         "packagesPath": "C:\\Users\\matth\\.nuget\\packages\\",
-        "outputPath": "c:\\CODING\\KitchenStockManager\\obj\\",
+        "outputPath": "C:\\CODING\\KitchenStockManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
