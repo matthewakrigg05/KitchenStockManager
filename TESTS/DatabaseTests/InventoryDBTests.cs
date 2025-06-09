@@ -1,6 +1,7 @@
 ﻿using KitchenStockManager.Models.Inventory;
 using KitchenStockManager.Utils;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Cms;
 using Utils;
 using Xunit;
 
@@ -21,11 +22,12 @@ namespace KitchenStockManager.TESTS
             // Assert
             using (var conn = await DBHelper.GetConnection())
             {
-                string query = "SELECT COUNT(*) FROM Items WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                using (var cmd = conn.CreateCommand())
                 {
+                    cmd.CommandText = "SELECT COUNT(*) FROM Items WHERE Name = @Name";
                     cmd.Parameters.AddWithValue("@Name", item.GetName());
-                    var count = (long)cmd.ExecuteScalar();
+
+                    var count = cmd.ExecuteScalar();
                     Assert.Equal(1, count);
                 }
             }
@@ -44,11 +46,12 @@ namespace KitchenStockManager.TESTS
             // Assert
             using (var conn = await DBHelper.GetConnection())
             {
-                string query = "SELECT COUNT(*) FROM Items WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                
+                using (var cmd = conn.CreateCommand())
                 {
+                    cmd.CommandText = "SELECT COUNT(*) FROM Items WHERE Name = @Name"; 
                     cmd.Parameters.AddWithValue("@Name", item.GetName());
-                    var count = (long)cmd.ExecuteScalar();
+                    var count = cmd.ExecuteScalar();
                     Assert.Equal(0, count);
                 }
             }
@@ -68,11 +71,11 @@ namespace KitchenStockManager.TESTS
             // Assert
             using (var conn = await DBHelper.GetConnection())
             {
-                string query = "SELECT Quantity FROM Items WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                using (var cmd = conn.CreateCommand())
                 {
+                    cmd.CommandText = "SELECT Quantity FROM Items WHERE Name = @Name";
                     cmd.Parameters.AddWithValue("@Name", item.GetName());
-                    var quantity = (int)cmd.ExecuteScalar();
+                    var quantity = cmd.ExecuteScalar();
                     Assert.Equal(20, quantity);
                 }
             }
@@ -90,11 +93,12 @@ namespace KitchenStockManager.TESTS
             // Assert
             using (var conn = await DBHelper.GetConnection())
             {
-                string query = "SELECT COUNT(*) FROM PreparedIngredients WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                
+                using (var cmd = conn.CreateCommand())
                 {
+                    cmd.CommandText = "SELECT COUNT(*) FROM PreparedIngredients WHERE Name = @Name";
                     cmd.Parameters.AddWithValue("@Name", preparedIngredient.GetName());
-                    var count = (long)cmd.ExecuteScalar();
+                    var count = cmd.ExecuteScalar();
                     Assert.Equal(1, count);
                 }
             }
@@ -113,11 +117,11 @@ namespace KitchenStockManager.TESTS
             // Assert
             using (var conn = await DBHelper.GetConnection())
             {
-                string query = "SELECT COUNT(*) FROM PreparedIngredients WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                using (var cmd = conn.CreateCommand())
                 {
+                    cmd.CommandText =  "SELECT COUNT(*) FROM PreparedIngredients WHERE Name = @Name";
                     cmd.Parameters.AddWithValue("@Name", preparedIngredient.GetName());
-                    var count = (long)cmd.ExecuteScalar();
+                    var count = cmd.ExecuteScalar();
                     Assert.Equal(0, count);
                 }
             }
@@ -137,11 +141,11 @@ namespace KitchenStockManager.TESTS
             // Assert
             using (var conn = await DBHelper.GetConnection())
             {
-                string query = "SELECT Quantity FROM PreparedIngredients WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                using (var cmd = conn.CreateCommand())
                 {
+                    cmd.CommandText = "SELECT Quantity FROM PreparedIngredients WHERE Name = @Name";
                     cmd.Parameters.AddWithValue("@Name", preparedIngredient.GetName());
-                    var quantity = (int)cmd.ExecuteScalar();
+                    var quantity = cmd.ExecuteScalar();
                     Assert.Equal(10, quantity);
                 }
             }
@@ -159,11 +163,12 @@ namespace KitchenStockManager.TESTS
             // Assert
             using (var conn = await DBHelper.GetConnection())
             {
-                string query = "SELECT COUNT(*) FROM RawIngredients WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                
+                using (var cmd = conn.CreateCommand())
                 {
+                    cmd.CommandText = "SELECT COUNT(*) FROM RawIngredients WHERE Name = @Name";
                     cmd.Parameters.AddWithValue("@Name", rawIngredient.GetName());
-                    var count = (long)cmd.ExecuteScalar();
+                    var count = cmd.ExecuteScalar();
                     Assert.Equal(1, count);
                 }
             }
@@ -182,11 +187,11 @@ namespace KitchenStockManager.TESTS
             // Assert
             using (var conn = await DBHelper.GetConnection())
             {
-                string query = "SELECT COUNT(*) FROM RawIngredients WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                using (var cmd = conn.CreateCommand())
                 {
+                    cmd.CommandText = "SELECT COUNT(*) FROM RawIngredients WHERE Name = @Name";
                     cmd.Parameters.AddWithValue("@Name", rawIngredient.GetName());
-                    var count = (long)cmd.ExecuteScalar();
+                    var count = cmd.ExecuteScalar();
                     Assert.Equal(0, count);
                 }
             }
@@ -206,11 +211,11 @@ namespace KitchenStockManager.TESTS
             // Assert
             using (var conn = await DBHelper.GetConnection())
             {
-                string query = "SELECT Quantity FROM RawIngredients WHERE Name = @Name";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                using (var cmd = conn.CreateCommand())
                 {
+                    cmd.CommandText = "SELECT Quantity FROM RawIngredients WHERE Name = @Name";
                     cmd.Parameters.AddWithValue("@Name", rawIngredient.GetName());
-                    var quantity = (int)cmd.ExecuteScalar();
+                    var quantity = cmd.ExecuteScalar();
                     Assert.Equal(100, quantity);
                 }
             }

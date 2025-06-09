@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Data.Sqlite;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -7,13 +7,9 @@ namespace Utils
     public static class DBHelper
     {
         // Method for accessing conenections from conection pool
-        public static async Task<MySqlConnection> GetConnection()
+        public static async Task<SqliteConnection> GetConnection()
         {
-            // DB pass cannot be published, use sysenv named dbPass
-            string dbPass = Environment.GetEnvironmentVariable("dbPass") ?? throw new InvalidOperationException("Database password environment variable is not set.");
-
-            string connstring = string.Format($"Server=127.0.0.1; database=ksm; UID=root; password={dbPass}");
-            var connection = new MySqlConnection(connstring);
+            using var connection = new SqliteConnection("Data Source = KSM.db");
             await connection.OpenAsync();
 
             return connection;
