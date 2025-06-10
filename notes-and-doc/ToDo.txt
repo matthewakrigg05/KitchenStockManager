@@ -1,2 +1,9 @@
 PRIORITY
 - Get the unit tests working again and make sure they are passing
+    - get testing tab to work properly so i can see and easily run tests [DONE]
+
+- Get the testing project onto github with the .sln file... Somehow. [DONE]
+
+- work out what i actually need for my db
+    - add whats needed to db
+    - start implementing ability to add/rem ingredients

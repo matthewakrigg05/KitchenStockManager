@@ -1,0 +1,162 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/matthew/SSD2/VSCODE/KSM/TestingProject/TestingProject.csproj": {}
+  },
+  "projects": {
+    "/home/matthew/SSD2/VSCODE/KSM/KitchenStockManager/KitchenStockManager.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/matthew/SSD2/VSCODE/KSM/KitchenStockManager/KitchenStockManager.csproj",
+        "projectName": "KitchenStockManager",
+        "projectPath": "/home/matthew/SSD2/VSCODE/KSM/KitchenStockManager/KitchenStockManager.csproj",
+        "packagesPath": "/home/matthew/.nuget/packages/",
+        "outputPath": "/home/matthew/SSD2/VSCODE/KSM/KitchenStockManager/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/matthew/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[9.3.0, )"
+            },
+            "xunit.assert": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
+            "xunit.extensibility.core": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.116/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/matthew/SSD2/VSCODE/KSM/TestingProject/TestingProject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/matthew/SSD2/VSCODE/KSM/TestingProject/TestingProject.csproj",
+        "projectName": "TestingProject",
+        "projectPath": "/home/matthew/SSD2/VSCODE/KSM/TestingProject/TestingProject.csproj",
+        "packagesPath": "/home/matthew/.nuget/packages/",
+        "outputPath": "/home/matthew/SSD2/VSCODE/KSM/TestingProject/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/matthew/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/matthew/SSD2/VSCODE/KSM/KitchenStockManager/KitchenStockManager.csproj": {
+                "projectPath": "/home/matthew/SSD2/VSCODE/KSM/KitchenStockManager/KitchenStockManager.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.6.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "xunit.extensibility.core": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.116/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
