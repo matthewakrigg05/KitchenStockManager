@@ -6,4 +6,4 @@ PRIORITY
 
 - work out what i actually need for my db
     - add whats needed to db
-    - start implementing ability to add/rem ingredients
+    - start implementing ability to add/rem ingredients and other objects
