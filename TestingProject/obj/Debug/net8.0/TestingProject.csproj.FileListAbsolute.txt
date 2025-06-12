@@ -151,3 +151,4 @@
 /home/matthew/SSD2/VSCODE/KSM/TestingProject/obj/Debug/net8.0/TestingProject.pdb
 /home/matthew/SSD2/VSCODE/KSM/TestingProject/obj/Debug/net8.0/TestingProject.genruntimeconfig.cache
 /home/matthew/SSD2/VSCODE/KSM/TestingProject/obj/Debug/net8.0/ref/TestingProject.dll
+/home/matthew/SSD2/VSCODE/KSM/TestingProject/obj/Debug/net8.0/TestingProject.sourcelink.json
