@@ -14,3 +14,20 @@ CREATE TABLE OrderItems (
     FOREIGN KEY (orderId) REFERENCES Orders(orderId),
     FOREIGN KEY (inventoryItemId) REFERENCES InventoryItems(inventoryItemId)
 );
+
+CREATE TABLE PreparationList (
+    prepListId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    prepListDate DATETIME NOT NULL
+)
+
+CREATE TABLE PreparationListItems (
+    prepItemId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    ingredientId INT NOT NULL,
+    itemType ENUM('Raw', 'Prepared') NOT NULL,
+    FOREIGN KEY (ingredientId) REFERENCES (
+        CASE
+            WHEN itemType = 'Raw' THEN RawIngredients(rawIngredientId)
+            WHEN itemType = 'Prepared' THEN PreparedIngredients(preparedIngredientId)
+        END
+    )
+)
