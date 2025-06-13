@@ -7,7 +7,6 @@ namespace KitchenStockManager
     {
         static void Main(string[] args)
         {
-            
         }
     }
 }

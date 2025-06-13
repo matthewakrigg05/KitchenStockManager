@@ -9,7 +9,8 @@ namespace Utils
         // Method for accessing conenections from conection pool
         public static SqliteConnection GetConnection()
         {
-            using var connection = new SqliteConnection("Data Source = KSM.db");
+            var connection = new SqliteConnection("Data Source = KSM.db");
+            connection.Open();
 
             return connection;
         }
