@@ -6,7 +6,6 @@ namespace Utils
 {
     public static class DBHelper
     {
-        // Method for accessing conenections from conection pool
         public static SqliteConnection GetConnection()
         {
             var connection = new SqliteConnection("Data Source = KSM.db");

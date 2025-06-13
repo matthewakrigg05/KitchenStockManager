@@ -10,7 +10,8 @@ PRIORITY
 TODAY MINIMUM:
  - Passing unit tests
     - Why is it not working
-    - Doesnt seem to connect
+    - Doesnt seem to connect [DONE]
 
+- Write some unit tests in advance of methods with ingredients etc
 
  - DB tables and initialisation methods

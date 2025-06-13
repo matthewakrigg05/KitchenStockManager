@@ -8,8 +8,6 @@
 CREATE TABLE RawIngredients (
     rawIngredientId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(250) NOT NULL,
-    quantity INT NOT NULL,
-    unit VARCHAR(50) NOT NULL,
     cost DECIMAL(10,2),
     supplierId INT,
     foodGroup VARCHAR(100),
@@ -19,8 +17,6 @@ CREATE TABLE RawIngredients (
 CREATE TABLE PreparedIngredients (
     preparedIngredientId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(250) NOT NULL,
-    quantity INT NOT NULL,
-    unit VARCHAR(50) NOT NULL,
     cost DECIMAL(10,2),
     supplierId INT,
     preparationInstructions TEXT,
@@ -30,8 +26,6 @@ CREATE TABLE PreparedIngredients (
 CREATE TABLE Items (
     itemId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(250) NOT NULL,
-    quantity INT NOT NULL,
-    unit VARCHAR(50) NOT NULL,
     cost DECIMAL(10,2),
     supplierId INT,
     FOREIGN KEY (supplierId) REFERENCES Suppliers(supplierId)

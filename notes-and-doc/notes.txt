@@ -1,3 +1,6 @@
-Converting to sqlite, new plan is to operate the application using sqlite on own machines,
-then eventually add the option to add users and a subscription service where the data from
-local sqlite db can be backed up, versions saved, backup files such as orders, preparation lists etc.
+DB INFO:
+
+Presets that can be made/added: prepared ingredients, raw ingredients, suppliers, items. These are going to be templates for being added
+to inventory
+
+Inventory           StockOptions        Orders
