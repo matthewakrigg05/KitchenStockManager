@@ -1,5 +1,5 @@
 CREATE TABLE Orders (
-    orderId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    orderId INT NOT NULL PRIMARY KEY,
     customerId INT NOT NULL,
     orderDate DATETIME NOT NULL,
     totalCost DECIMAL(10,2) NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE Orders (
 );
 
 CREATE TABLE OrderItems (
-    orderItemId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    orderItemId INT NOT NULL PRIMARY KEY,
     orderId INT NOT NULL,
     inventoryItemId INT NOT NULL,
     quantity INT NOT NULL,
@@ -16,18 +16,18 @@ CREATE TABLE OrderItems (
 );
 
 CREATE TABLE PreparationList (
-    prepListId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    prepListId INT NOT NULL PRIMARY KEY,
     prepListDate DATETIME NOT NULL
-)
+);
 
-CREATE TABLE PreparationListItems (
-    prepItemId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    ingredientId INT NOT NULL,
-    itemType ENUM('Raw', 'Prepared') NOT NULL,
-    FOREIGN KEY (ingredientId) REFERENCES (
-        CASE
-            WHEN itemType = 'Raw' THEN RawIngredients(rawIngredientId)
-            WHEN itemType = 'Prepared' THEN PreparedIngredients(preparedIngredientId)
-        END
-    )
-)
+CREATE TABLE PreparationListRawItems (
+	prepItemId INT NOT NULL PRIMARY KEY,
+	rawIngredientId INT NOT NULL,
+	FOREIGN KEY (rawIngredientId) REFERENCES RawIngredients(rawIngredientId)
+);
+
+CREATE TABLE PreparationListPreparedItems (
+	prepItemId INT NOT NULL PRIMARY KEY,
+	preparedIngredientId INT NOT NULL,
+	FOREIGN KEY (preparedIngredientId) REFERENCES PreparedIngredients(preparedIngredientId)
+);

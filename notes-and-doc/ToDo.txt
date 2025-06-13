@@ -14,4 +14,4 @@ TODAY MINIMUM:
 
 - Write some unit tests in advance of methods with ingredients etc
 
- - DB tables and initialisation methods
+- DB tables and initialisation methods

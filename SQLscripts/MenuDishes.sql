@@ -1,5 +1,5 @@
 CREATE TABLE Recipes (
-    recipeId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    recipeId INT NOT NULL PRIMARY KEY,
     name VARCHAR(250) NOT NULL,
     description TEXT,
     preparationInstructions TEXT,
@@ -7,7 +7,7 @@ CREATE TABLE Recipes (
 );
 
 CREATE TABLE RecipeIngredients (
-    recipeIngredientId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    recipeIngredientId INT NOT NULL PRIMARY KEY,
     recipeId INT NOT NULL,
     inventoryItemId INT NOT NULL,
     quantity INT NOT NULL,
@@ -16,16 +16,16 @@ CREATE TABLE RecipeIngredients (
 );
 
 CREATE TABLE Dish (
-    dishId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    dishId INT NOT NULL PRIMARY KEY,
     dishName VARCHAR(150) NOT NULL,
     dishDescription TEXT,
     dishCost DECIMAL(10,2) NOT NULL
-)
+);
 
 CREATE TABLE Menu (
-    menuId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    menuId INT NOT NULL PRIMARY KEY,
     menuName VARCHAR(150) NOT NULL
-)
+);
 
 CREATE TABLE MenuItems (
     dishId INT NOT NULL,
@@ -33,4 +33,4 @@ CREATE TABLE MenuItems (
     FOREIGN KEY (dishId) REFERENCES Dish(dishId),
     FOREIGN KEY (menuId) REFERENCES Menu(menuId),
     PRIMARY KEY (dishId, menuId)
-)
+);
