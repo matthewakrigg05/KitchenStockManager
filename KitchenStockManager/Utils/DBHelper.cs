@@ -1,6 +1,4 @@
 ﻿using Microsoft.Data.Sqlite;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Utils
 {

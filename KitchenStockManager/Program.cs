@@ -7,7 +7,9 @@ namespace KitchenStockManager
     {
         static void Main(string[] args)
         {
-            DBHelper.GetConnection();
+            DatabaseInitialiser dbInit = new DatabaseInitialiser();
+
+            dbInit.sqlTableCreation("SQLscripts/FullTablesScript.sql");
         }
     }
 }
