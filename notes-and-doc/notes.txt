@@ -2,5 +2,3 @@ DB INFO:
 
 Presets that can be made/added: prepared ingredients, raw ingredients, suppliers, items. These are going to be templates for being added
 to inventory
-
-Inventory           StockOptions        Orders
