@@ -1,1 +1,4 @@
 PRIORITY
+ - DB services such as adding ingredients from a default set that come pre made
+ - DB services for submitting orders
+ - Creating recipes etc
